@@ -1,4 +1,9 @@
 at/technikumwien/tourplanner_frontend/Controller.class
+at/technikumwien/tourplanner_frontend/model/Tour.class
 at/technikumwien/tourplanner_frontend/MainViewModel.class
+at/technikumwien/tourplanner_frontend/Controller$1.class
 module-info.class
+at/technikumwien/tourplanner_frontend/businesslayer/manager/JavaAppManager.class
+at/technikumwien/tourplanner_frontend/businesslayer/manager/JavaAppManagerImpl.class
 at/technikumwien/tourplanner_frontend/Main.class
+at/technikumwien/tourplanner_frontend/businesslayer/manager/JavaAppManagerFactory.class

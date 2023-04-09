@@ -38,7 +38,7 @@
         </rowConstraints>
         <children>
             <TextField fx:id="searchBar" promptText="Search" GridPane.hgrow="ALWAYS"/>
-            <ListView fx:id="tourList" GridPane.rowIndex="1" />
+            <ListView fx:id="listViewTours" GridPane.rowIndex="1" />
         </children>
     </GridPane>
 </VBox>
