@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextField?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="at.technikumwien.tourplanner_frontend.controller.TourInfoController">
+    <TabPane>
+        <Tab text="General" />
+        <Tab text="Route"/>
+        <Tab text="Misc"/>
+    </TabPane>
+</VBox>

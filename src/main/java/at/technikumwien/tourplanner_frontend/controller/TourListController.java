@@ -1,4 +1,4 @@
-package at.technikumwien.tourplanner_frontend;
+package at.technikumwien.tourplanner_frontend.controller;
 
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.JavaAppManager;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.JavaAppManagerFactory;
@@ -7,18 +7,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class TourListController implements Initializable {
     @FXML
     public ListView<Tour> listViewTours;
     private ObservableList<Tour> tours;
     private JavaAppManager manager;
 
-    public Controller() {
+    public TourListController() {
         System.out.println("Controller created");
     }
 

@@ -7,7 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ListView?>
-<VBox xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.technikumwien.tourplanner_frontend.Controller">
+<VBox xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.technikumwien.tourplanner_frontend.controller.MainWindowController">
     <MenuBar fx:id="menuBar">
         <menus>
             <Menu text="File">
@@ -37,8 +37,10 @@
             <RowConstraints />
         </rowConstraints>
         <children>
-            <TextField fx:id="searchBar" promptText="Search" GridPane.hgrow="ALWAYS"/>
-            <ListView fx:id="listViewTours" GridPane.rowIndex="1" />
+            <TextField fx:id="searchBar" promptText="Search" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS"/>
+            <fx:include fx:id="tourList" source="tourList.fxml" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.rowSpan="3" GridPane.vgrow="ALWAYS"/>
+            <fx:include fx:id="tourInfo" source="tourInfo.fxml" GridPane.rowIndex="1" GridPane.columnIndex="1" minHeight="200" GridPane.hgrow="ALWAYS"/>
+            <fx:include fx:id="tourLogs" source="tourLogs.fxml" GridPane.rowIndex="2" GridPane.columnIndex="1" minHeight="200" GridPane.hgrow="ALWAYS"/>
         </children>
     </GridPane>
 </VBox>
