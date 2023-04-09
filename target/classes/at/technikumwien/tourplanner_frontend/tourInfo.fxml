@@ -7,10 +7,10 @@
 <?import javafx.scene.control.TextField?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="at.technikumwien.tourplanner_frontend.controller.TourInfoController">
+      fx:controller="at.technikumwien.tourplanner_frontend.presentation.controller.TourInfoController">
     <TabPane>
-        <Tab text="General" />
-        <Tab text="Route"/>
-        <Tab text="Misc"/>
+        <Tab text="General" closable="false" />
+        <Tab text="Route" closable="false"/>
+        <Tab text="Misc" closable="false"/>
     </TabPane>
 </VBox>

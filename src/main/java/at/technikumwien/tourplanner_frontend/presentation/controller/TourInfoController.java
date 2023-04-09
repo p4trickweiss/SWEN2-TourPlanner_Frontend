@@ -1,4 +1,4 @@
-package at.technikumwien.tourplanner_frontend.controller;
+package at.technikumwien.tourplanner_frontend.presentation.controller;
 
 import javafx.fxml.Initializable;
 

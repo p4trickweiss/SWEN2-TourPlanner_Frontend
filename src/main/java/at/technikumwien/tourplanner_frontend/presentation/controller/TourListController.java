@@ -1,12 +1,11 @@
-package at.technikumwien.tourplanner_frontend.controller;
+package at.technikumwien.tourplanner_frontend.presentation.controller;
 
-import at.technikumwien.tourplanner_frontend.businesslayer.manager.JavaAppManager;
-import at.technikumwien.tourplanner_frontend.businesslayer.manager.JavaAppManagerFactory;
 import at.technikumwien.tourplanner_frontend.model.Tour;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourListViewModel;
+import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 
@@ -16,25 +15,28 @@ import java.util.ResourceBundle;
 public class TourListController implements Initializable {
     @FXML
     public ListView<Tour> listViewTours;
-    private ObservableList<Tour> tours;
-    private JavaAppManager manager;
+    @FXML
+    public Button btnAddTour;
+    @FXML Button btnDeleteTour;
+    @FXML Button btnEditTour;
+
+    private final TourListViewModel tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();
 
     public TourListController() {
-        System.out.println("Controller created");
+        System.out.println("TourListController created");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Controller init");
+        System.out.println("TourListController init");
 
-        manager = JavaAppManagerFactory.getJavaAppManager();
+        listViewTours.setItems(tourListViewModel.getTours());
 
-        tours = FXCollections.observableArrayList();
-        tours.addAll(manager.getTours());
-        listViewTours.setItems(tours);
+        formatCells();
+    }
 
-        // format cells
-        listViewTours.setCellFactory((param -> new ListCell<Tour>() {
+    private void formatCells() {
+        listViewTours.setCellFactory((param -> new ListCell<>() {
             @Override
             protected void updateItem(Tour tour, boolean empty) {
                 super.updateItem(tour, empty);

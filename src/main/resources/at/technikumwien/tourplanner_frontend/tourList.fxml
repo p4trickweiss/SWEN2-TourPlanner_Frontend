@@ -7,13 +7,13 @@
 <?import javafx.scene.control.ListView?>
 <VBox  xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="at.technikumwien.tourplanner_frontend.controller.TourListController">
+          fx:controller="at.technikumwien.tourplanner_frontend.presentation.controller.TourListController">
     <children>
         <HBox GridPane.hgrow="ALWAYS" spacing="5">
             <Label text="Tours" />
-            <Button text="+" />
-            <Button text="-" />
-            <Button text="..." />
+            <Button fx:id="btnAddTour" text="+" />
+            <Button fx:id="btnDeleteTour" text="-" />
+            <Button fx:id="btnEditTour" text="..." />
         </HBox>
         <ListView fx:id="listViewTours" VBox.vgrow="ALWAYS"/>
     </children>

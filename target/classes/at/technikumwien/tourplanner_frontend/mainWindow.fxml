@@ -7,7 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ListView?>
-<VBox xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.technikumwien.tourplanner_frontend.controller.MainWindowController">
+<VBox xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.technikumwien.tourplanner_frontend.presentation.controller.MainWindowController">
     <MenuBar fx:id="menuBar">
         <menus>
             <Menu text="File">
