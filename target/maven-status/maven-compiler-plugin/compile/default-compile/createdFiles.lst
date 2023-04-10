@@ -12,3 +12,4 @@ at/technikumwien/tourplanner_frontend/presentation/controller/TourLogsController
 at/technikumwien/tourplanner_frontend/presentation/controller/TourListController$1.class
 at/technikumwien/tourplanner_frontend/businesslayer/manager/TourPlannerManager.class
 at/technikumwien/tourplanner_frontend/Main.class
+at/technikumwien/tourplanner_frontend/presentation/controller/SearchBarController.class
