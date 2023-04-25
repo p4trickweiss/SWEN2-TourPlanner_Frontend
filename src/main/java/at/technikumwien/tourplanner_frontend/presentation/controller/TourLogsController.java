@@ -34,8 +34,17 @@ public class TourLogsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableViewTourLogs.setItems(tourLogsViewModel.getTourLogs());
+        formatTableCells();
+    }
+
+    private void formatTableCells() {
         tvDate.setCellValueFactory(new PropertyValueFactory<TourLog, String>("comment"));
         tvDuration.setCellValueFactory(new PropertyValueFactory<TourLog, String>("difficulty"));
         tvDistance.setCellValueFactory(new PropertyValueFactory<TourLog, String>("rating"));
+        /*
+        tvDate.setCellValueFactory(tourLog -> new SimpleStringProperty(tourLog.getValue().getComment()));
+        tvDuration.setCellValueFactory(tourLog -> new SimpleStringProperty(tourLog.getValue().getDifficulty()));
+        tvDistance.setCellValueFactory(tourLog -> new SimpleStringProperty(tourLog.getValue().getTime_stamp()));
+        */
     }
 }

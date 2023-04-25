@@ -7,11 +7,8 @@ import at.technikumwien.tourplanner_frontend.model.TourLog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.List;
-
 public class TourLogsViewModel {
     private ObservableList<TourLog> tourLogs;
-
     private final TourPlannerManager manager;
 
     public TourLogsViewModel() {
@@ -20,9 +17,12 @@ public class TourLogsViewModel {
     }
 
     public ObservableList<TourLog> getTourLogs() {
-        tourLogs.clear();
-        List<Tour> tours = manager.getTours();
-        tourLogs.addAll(tours.get(0).getTourLogs());
-        return tourLogs;
+        return this.tourLogs;
+    }
+
+    public void changeTourLogs(Tour currentTour) {
+        this.tourLogs.clear();
+        this.tourLogs.addAll(currentTour.getTourLogs());
+        System.out.println(this.tourLogs.size());
     }
 }
