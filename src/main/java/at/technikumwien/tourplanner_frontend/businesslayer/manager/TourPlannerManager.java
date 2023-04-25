@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface TourPlannerManager {
     List<Tour> getTours();
+    void deleteTour(Tour currentTour);
 }

@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 
 public class TourListViewModel {
     private final ObservableList<Tour> tours;
+    private Tour currentTour;
     private final TourPlannerManager manager;
 
     public TourListViewModel() {
@@ -15,9 +16,21 @@ public class TourListViewModel {
         this.tours = FXCollections.observableArrayList();
     }
 
+    public Tour getCurrentTour() {
+        return currentTour;
+    }
+
+    public void setCurrentTour(Tour currentTour) {
+        this.currentTour = currentTour;
+    }
+
     public ObservableList<Tour> getTours() {
         tours.clear();
         tours.addAll(manager.getTours());
         return tours;
+    }
+
+    public void deleteTour(Tour currentTour) {
+        manager.deleteTour(currentTour);
     }
 }

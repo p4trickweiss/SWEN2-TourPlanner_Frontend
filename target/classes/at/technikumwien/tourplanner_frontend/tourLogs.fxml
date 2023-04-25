@@ -7,18 +7,18 @@
     <children>
         <HBox spacing="5" GridPane.hgrow="ALWAYS">
             <Label text="Tour Logs" />
-            <Button text="+" />
-            <Button text="-" />
-            <Button text="..." />
+            <Button fx:id="btnAddTourLog" text="+" />
+            <Button fx:id="btnDeleteTourLog" text="-" />
+            <Button fx:id="btnEditTourLog" text="..." />
         </HBox>
-            <TableView>
+            <TableView fx:id="tableViewTourLogs">
                 <columnResizePolicy>
                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                 </columnResizePolicy>
                 <columns>
-                    <TableColumn text="Date" />
-                    <TableColumn text="Duration" />
-                    <TableColumn prefWidth="86.5" text="Distance" />
+                    <TableColumn fx:id="tvDate" text="Date" />
+                    <TableColumn fx:id="tvDuration" text="Duration" />
+                    <TableColumn fx:id="tvDistance" prefWidth="86.5" text="Distance" />
                 </columns>
             </TableView>
     </children>
