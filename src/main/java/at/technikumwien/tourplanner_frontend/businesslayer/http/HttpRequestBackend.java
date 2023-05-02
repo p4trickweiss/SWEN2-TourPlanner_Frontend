@@ -46,4 +46,22 @@ public class HttpRequestBackend {
         }
     }
 
+    public HttpResponse<String> sendPostRequest(String endpoint, String body) throws Exception {
+        try {
+            URI uri = new URI("http://localhost:8080/api/" + endpoint);
+            HttpRequest httpRequest = HttpRequest.newBuilder()
+                    .uri(uri)
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(body))
+                    .build();
+            HttpResponse<String> response = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            return response;
+        }
+        catch (Exception e) {
+            //e.printStackTrace();
+            System.out.println("in catch");
+            throw new Exception();
+        }
+    }
+
 }

@@ -30,6 +30,16 @@ public class Tour {
         this.tourLogs = tourLogs;
     }
 
+    public String newTourJson() {
+        return "{" +
+                "\"name\": \"" + name + "\"," +
+                "\"tour_description\": \"" + tour_description + "\"," +
+                "\"tour_from\": \"" + tour_from + "\"," +
+                "\"tour_to\": \"" + tour_to + "\"," +
+                "\"transport_type\": \"" + transport_type + "\"," +
+                "}";
+    }
+
     public Long getId() {
         return id;
     }

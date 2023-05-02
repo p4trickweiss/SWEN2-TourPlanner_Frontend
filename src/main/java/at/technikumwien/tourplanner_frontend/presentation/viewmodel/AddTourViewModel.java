@@ -2,6 +2,7 @@ package at.technikumwien.tourplanner_frontend.presentation.viewmodel;
 
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManager;
+import at.technikumwien.tourplanner_frontend.model.NewTour;
 import at.technikumwien.tourplanner_frontend.model.Tour;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -14,5 +15,5 @@ public class AddTourViewModel {
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
     }
 
-    public void addTour(Tour newTour) { manager.addTour(newTour); }
+    public void addTour(NewTour newTour) { manager.addTour(newTour); }
 }

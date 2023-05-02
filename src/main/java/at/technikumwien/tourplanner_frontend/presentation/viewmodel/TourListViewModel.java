@@ -4,7 +4,6 @@ import at.technikumwien.tourplanner_frontend.Main;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManager;
 import at.technikumwien.tourplanner_frontend.model.Tour;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;

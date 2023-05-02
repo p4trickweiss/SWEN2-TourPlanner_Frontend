@@ -37,7 +37,7 @@ public class EditTourController implements Initializable {
     private final EditTourViewModel editTourViewModel = ViewModelFactory.INSTANCE.getEditTourViewModel();
 
     public EditTourController(){
-        System.out.printf("EditTourController created");
+        System.out.println("EditTourController created");
     }
 
     @Override
