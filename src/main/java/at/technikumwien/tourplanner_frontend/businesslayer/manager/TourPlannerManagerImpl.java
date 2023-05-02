@@ -89,4 +89,14 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
             System.out.println(e.getMessage());
         }
     }
+
+    @Override
+    public void addTour(Tour tour) {
+        System.out.printf(tour.getName());
+    }
+
+    @Override
+    public void editTour(Tour tour) {
+        System.out.printf(tour.getName());
+    }
 }
