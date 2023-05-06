@@ -21,7 +21,7 @@ public class TourListViewModel {
 
     public TourListViewModel() {
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
-        tourLogsViewModel = new TourLogsViewModel();
+        tourLogsViewModel = ViewModelFactory.INSTANCE.getTourLogsViewModel();
         this.tours = FXCollections.observableArrayList();
     }
 
