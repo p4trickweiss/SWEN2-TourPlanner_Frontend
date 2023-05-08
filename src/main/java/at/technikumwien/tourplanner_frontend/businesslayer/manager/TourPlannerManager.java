@@ -9,5 +9,5 @@ public interface TourPlannerManager {
     List<Tour> getTours();
     void deleteTour(Tour currentTour);
     void addTour(NewTour newTour);
-    void editTour(Tour newTour);
+    void editTour(NewTour tour, Long id);
 }

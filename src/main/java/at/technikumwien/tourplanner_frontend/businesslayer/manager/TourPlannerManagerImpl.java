@@ -95,6 +95,7 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
     public void addTour(NewTour tour) {
         try {
             String body = objectMapper.writeValueAsString(tour);
+            System.out.println(body);
             HttpResponse<String> response = httpRequestBackend.sendPostRequest("tour", body);
         }
         catch (Exception e) {
@@ -103,7 +104,14 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
     }
 
     @Override
-    public void editTour(Tour tour) {
-        System.out.printf(tour.getName());
+    public void editTour(NewTour tour, Long id) {
+        System.out.println("in edit tour");
+        try {
+            String body = objectMapper.writeValueAsString(tour);
+            HttpResponse<String> response = httpRequestBackend.sendPutRequest("tour/" + id.toString(), body);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

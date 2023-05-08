@@ -17,19 +17,19 @@ public class TourListViewModel {
     private final ObservableList<Tour> tours;
     private Tour currentTour;
     private TourLogsViewModel tourLogsViewModel;
+    private EditTourViewModel editTourViewModel;
     private final TourPlannerManager manager;
 
     public TourListViewModel() {
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
         tourLogsViewModel = ViewModelFactory.INSTANCE.getTourLogsViewModel();
+        editTourViewModel = ViewModelFactory.INSTANCE.getEditTourViewModel();
         this.tours = FXCollections.observableArrayList();
     }
 
     public void setCurrentTour(Tour currentTour) {
         this.currentTour = currentTour;
     }
-
-    public Tour getCurrentTour() {return currentTour;}
 
     public void changeLogs() {
         this.tourLogsViewModel.changeTourLogs(currentTour);
@@ -39,6 +39,11 @@ public class TourListViewModel {
         tours.clear();
         tours.addAll(manager.getTours());
         return tours;
+    }
+
+    public void updateTourList() {
+        tours.clear();
+        tours.addAll(manager.getTours());
     }
 
     public void deleteTour(Tour currentTour) {
@@ -57,11 +62,12 @@ public class TourListViewModel {
            stage.show();
        } catch (Exception e) {
            System.out.printf(e.getMessage());
-           System.out.printf("Cant load new window");
+           System.out.println("Cant load new window");
        }
    }
 
    public void editTour() {
+        editTourViewModel.currentTourProperty().setValue(currentTour);
        try{
            URL fxmlLocation = Main.class.getResource("EditTour.fxml");
            FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
@@ -73,7 +79,7 @@ public class TourListViewModel {
            stage.show();
        } catch (Exception e) {
            System.out.printf(e.getMessage());
-           System.out.printf("Cant load new window");
+           System.out.println("Cant load new window");
        }
    }
 }

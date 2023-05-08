@@ -9,11 +9,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class AddTourViewModel {
+    private final TourListViewModel tourListViewModel;
     private final TourPlannerManager manager;
 
     public AddTourViewModel() {
+        this.tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
     }
 
-    public void addTour(NewTour newTour) { manager.addTour(newTour); }
+    public void addTour(NewTour newTour) {
+        manager.addTour(newTour);
+        tourListViewModel.updateTourList();
+    }
 }

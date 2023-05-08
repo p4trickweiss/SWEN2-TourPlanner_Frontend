@@ -2,7 +2,6 @@ package at.technikumwien.tourplanner_frontend.model;
 
 public class NewTour {
     private String name;
-
     private String tour_description;
     private String tour_from;
     private String tour_to;
