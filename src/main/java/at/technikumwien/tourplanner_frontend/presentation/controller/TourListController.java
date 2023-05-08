@@ -1,22 +1,14 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
-import at.technikumwien.tourplanner_frontend.Main;
 import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourListViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
 
-
-import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -67,18 +59,17 @@ public class TourListController implements Initializable {
     }
 
     @FXML
-    private void deleteTour(ActionEvent actionEvent) {
+    private void deleteTour() {
         tourListViewModel.deleteTour(currentTour);
-        listViewTours.setItems(tourListViewModel.getTours());
     }
 
     @FXML
-    private void addTour(ActionEvent actionEvent){
+    private void addTour(){
         tourListViewModel.addTour();
     }
 
     @FXML
-    private void editTour(ActionEvent actionEvent) {
+    private void editTour() {
         tourListViewModel.editTour();
 
     }

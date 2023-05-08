@@ -16,8 +16,8 @@ import java.net.URL;
 public class TourListViewModel {
     private final ObservableList<Tour> tours;
     private Tour currentTour;
-    private TourLogsViewModel tourLogsViewModel;
-    private EditTourViewModel editTourViewModel;
+    private final TourLogsViewModel tourLogsViewModel;
+    private final EditTourViewModel editTourViewModel;
     private final TourPlannerManager manager;
 
     public TourListViewModel() {
@@ -36,8 +36,7 @@ public class TourListViewModel {
     }
 
     public ObservableList<Tour> getTours() {
-        tours.clear();
-        tours.addAll(manager.getTours());
+        this.updateTourList();
         return tours;
     }
 
@@ -48,13 +47,14 @@ public class TourListViewModel {
 
     public void deleteTour(Tour currentTour) {
         manager.deleteTour(currentTour);
+        this.updateTourList();
     }
 
    public void addTour() {
        try{
            URL fxmlLocation = Main.class.getResource("addTour.fxml");
            FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
-           Parent root1 = (Parent) fxmlLoader.load();
+           Parent root1 = fxmlLoader.load();
            Stage stage = new Stage();
 
            stage.setTitle("Add Tour");
@@ -71,7 +71,7 @@ public class TourListViewModel {
        try{
            URL fxmlLocation = Main.class.getResource("EditTour.fxml");
            FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
-           Parent root1 = (Parent) fxmlLoader.load();
+           Parent root1 = fxmlLoader.load();
            Stage stage = new Stage();
 
            stage.setTitle("Edit Tour");

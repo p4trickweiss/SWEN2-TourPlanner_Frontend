@@ -9,7 +9,6 @@ public enum ViewModelFactory {
     private AddTourViewModel addTourViewModel;
     private EditTourViewModel editTourViewModel;
 
-    // private AddTourViewModel addTourViewModel;
 
     public MainWindowViewModel getMainWindowViewModel() {
         if (mainWindowViewModel == null) {

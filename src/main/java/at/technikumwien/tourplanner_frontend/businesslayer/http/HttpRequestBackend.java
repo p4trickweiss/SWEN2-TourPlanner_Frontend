@@ -24,7 +24,6 @@ public class HttpRequestBackend {
         }
         catch (Exception e) {
             //e.printStackTrace();
-            System.out.println(e.getMessage());
             throw new Exception();
         }
     }
@@ -41,7 +40,6 @@ public class HttpRequestBackend {
         }
         catch (Exception e) {
             //e.printStackTrace();
-            System.out.println("in catch");
             throw new Exception();
         }
     }
@@ -59,7 +57,6 @@ public class HttpRequestBackend {
         }
         catch (Exception e) {
             //e.printStackTrace();
-            System.out.println("in catch");
             throw new Exception();
         }
     }
@@ -77,7 +74,6 @@ public class HttpRequestBackend {
         }
         catch (Exception e) {
             //e.printStackTrace();
-            System.out.println("in catch");
             throw new Exception();
         }
     }
