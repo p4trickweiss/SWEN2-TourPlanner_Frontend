@@ -5,6 +5,7 @@ import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerMa
 import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.model.TourLog;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.EditTourViewModel;
+import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourListViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,6 +30,7 @@ public class EditTourController implements Initializable {
     public TextField transport_type;
 
     private final EditTourViewModel editTourViewModel = ViewModelFactory.INSTANCE.getEditTourViewModel();
+    private final TourListViewModel tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();
 
     public EditTourController(){
         System.out.println("EditTourController created");
@@ -46,5 +48,6 @@ public class EditTourController implements Initializable {
     @FXML
     public void editTourAction(){
         editTourViewModel.editTour();
+        tourListViewModel.updateTourList();
     }
 }

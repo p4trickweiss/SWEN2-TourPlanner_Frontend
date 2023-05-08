@@ -29,9 +29,9 @@ public class HttpRequestBackend {
         }
     }
 
-    public HttpResponse<String> sendDeleteRequest(String endpoint, Long id) throws Exception{
+    public HttpResponse<String> sendDeleteRequest(String endpoint) throws Exception{
         try {
-            URI uri = new URI("http://localhost:8080/api/" + endpoint + "/" + id.toString());
+            URI uri = new URI("http://localhost:8080/api/" + endpoint);
             HttpRequest httpRequest = HttpRequest.newBuilder()
                     .uri(uri)
                     .DELETE()

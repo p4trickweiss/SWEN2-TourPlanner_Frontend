@@ -1,10 +1,6 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
-import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManager;
-import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
 import at.technikumwien.tourplanner_frontend.model.NewTour;
-import at.technikumwien.tourplanner_frontend.model.Tour;
-import at.technikumwien.tourplanner_frontend.model.TourLog;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.AddTourViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
 import javafx.fxml.FXML;
@@ -13,9 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 
 
-import java.awt.*;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AddTourController implements Initializable {
@@ -36,18 +30,20 @@ public class AddTourController implements Initializable {
     private final AddTourViewModel addTourViewModel = ViewModelFactory.INSTANCE.getAddTourViewModel();
 
     public AddTourController(){
-        System.out.println("AddTourController created");
     }
 
     @Override
     public void initialize(URL ulr, ResourceBundle resourceBundle){
-        System.out.println("AddTourController created");
+        name.textProperty().bindBidirectional(addTourViewModel.nameProperty());
+        tour_description.textProperty().bindBidirectional(addTourViewModel.tour_descriptionProperty());
+        tour_from.textProperty().bindBidirectional(addTourViewModel.tour_fromProperty());
+        tour_to.textProperty().bindBidirectional(addTourViewModel.tour_toProperty());
+        transport_type.textProperty().bindBidirectional(addTourViewModel.transport_typeProperty());
     }
 
     @FXML
     public void addTourAction(){
-        NewTour newTour = new NewTour(name.getText(), tour_from.getText(), tour_to.getText(), transport_type.getText(), tour_description.getText());
-        addTourViewModel.addTour(newTour);
+        addTourViewModel.addTour();
         //TODO close window
     }
 
