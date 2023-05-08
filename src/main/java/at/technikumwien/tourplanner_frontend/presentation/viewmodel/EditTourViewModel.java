@@ -8,12 +8,12 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class EditTourViewModel {
-    private SimpleObjectProperty<Tour> currentTour = new SimpleObjectProperty<Tour>();
-    private SimpleStringProperty name = new SimpleStringProperty();
-    private SimpleStringProperty tour_description = new SimpleStringProperty();
-    private SimpleStringProperty tour_from = new SimpleStringProperty();
-    private SimpleStringProperty tour_to = new SimpleStringProperty();
-    private SimpleStringProperty transport_type = new SimpleStringProperty();
+    private final SimpleObjectProperty<Tour> currentTour = new SimpleObjectProperty<>();
+    private final SimpleStringProperty name = new SimpleStringProperty();
+    private final SimpleStringProperty tour_description = new SimpleStringProperty();
+    private final SimpleStringProperty tour_from = new SimpleStringProperty();
+    private final SimpleStringProperty tour_to = new SimpleStringProperty();
+    private final SimpleStringProperty transport_type = new SimpleStringProperty();
     private final TourPlannerManager manager;
 
     public EditTourViewModel(){
@@ -34,10 +34,6 @@ public class EditTourViewModel {
         manager.editTour(editTour, currentTour.get().getId());
     }
 
-    public Object getCurrentTour() {
-        return currentTour.get();
-    }
-
     public SimpleObjectProperty<Tour> currentTourProperty() {
         return currentTour;
     }
@@ -50,33 +46,20 @@ public class EditTourViewModel {
         return name;
     }
 
-    public String getTour_description() {
-        return tour_description.get();
-    }
-
     public SimpleStringProperty tour_descriptionProperty() {
         return tour_description;
     }
 
-    public String getTour_from() {
-        return tour_from.get();
-    }
 
     public SimpleStringProperty tour_fromProperty() {
         return tour_from;
     }
 
-    public String getTour_to() {
-        return tour_to.get();
-    }
 
     public SimpleStringProperty tour_toProperty() {
         return tour_to;
     }
 
-    public String getTransport_type() {
-        return transport_type.get();
-    }
 
     public SimpleStringProperty transport_typeProperty() {
         return transport_type;
