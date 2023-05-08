@@ -10,6 +10,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -47,4 +49,16 @@ public class TourLogsController implements Initializable {
         tvDistance.setCellValueFactory(tourLog -> new SimpleStringProperty(tourLog.getValue().getTime_stamp()));
         */
     }
+
+    @FXML
+    public void addTourLog(){
+        tourLogsViewModel.addTourLog();
+    }
+
+    @FXML
+    public void editTourLog(){
+        tourLogsViewModel.editTourLog();
+    }
+
+
 }

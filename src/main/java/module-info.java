@@ -6,6 +6,8 @@ module tourplanner_frontend {
     requires java.net.http;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
+    requires kernel;
+    requires layout;
 
     opens at.technikumwien.tourplanner_frontend to javafx.graphics, javafx.fxml;
     exports at.technikumwien.tourplanner_frontend;

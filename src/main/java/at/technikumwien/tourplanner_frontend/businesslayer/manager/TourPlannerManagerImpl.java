@@ -2,6 +2,7 @@ package at.technikumwien.tourplanner_frontend.businesslayer.manager;
 
 import at.technikumwien.tourplanner_frontend.businesslayer.http.HttpRequestBackend;
 import at.technikumwien.tourplanner_frontend.model.NewTour;
+import at.technikumwien.tourplanner_frontend.model.NewTourLog;
 import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.model.TourLog;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -100,6 +101,16 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Override
+    public void addTourLog(NewTourLog tourLog){
+        System.out.printf("test");
+    }
+
+    @Override
+    public void editTourLog(NewTourLog tourLog){
+        System.out.printf("test");
     }
 
     @Override

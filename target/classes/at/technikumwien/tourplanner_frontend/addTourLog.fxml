@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.technikumwien.tourplanner_frontend.presentation.controller.AddTourLogController">
+
+    <Label text="comment:" />
+
+    <TextField fx:id="comment" />
+
+    <Label text="difficulty:" />
+
+    <TextField fx:id="difficulty" />
+
+    <Label text="rating:" />
+
+    <TextField fx:id="rating" />
+
+    <Label text="time_stamp:" />
+
+    <TextField fx:id="time_stamp" />
+
+    <Label text="total_time:" />
+
+    <TextField fx:id="total_time" />
+
+    <Button text="submit" fx:id="submit_button" onAction="#addTourLogAction"/>
+
+</VBox>
