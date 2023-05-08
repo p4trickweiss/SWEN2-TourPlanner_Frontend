@@ -31,7 +31,7 @@ public class TourLogsController implements Initializable {
     @FXML
     public TableColumn<TourLog, String> tvDistance;
 
-    private TourLogsViewModel tourLogsViewModel = ViewModelFactory.INSTANCE.getTourLogsViewModel();
+    private final TourLogsViewModel tourLogsViewModel = ViewModelFactory.INSTANCE.getTourLogsViewModel();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,14 +40,9 @@ public class TourLogsController implements Initializable {
     }
 
     private void formatTableCells() {
-        tvDate.setCellValueFactory(new PropertyValueFactory<TourLog, String>("comment"));
-        tvDuration.setCellValueFactory(new PropertyValueFactory<TourLog, String>("difficulty"));
-        tvDistance.setCellValueFactory(new PropertyValueFactory<TourLog, String>("rating"));
-        /*
-        tvDate.setCellValueFactory(tourLog -> new SimpleStringProperty(tourLog.getValue().getComment()));
-        tvDuration.setCellValueFactory(tourLog -> new SimpleStringProperty(tourLog.getValue().getDifficulty()));
-        tvDistance.setCellValueFactory(tourLog -> new SimpleStringProperty(tourLog.getValue().getTime_stamp()));
-        */
+        tvDate.setCellValueFactory(new PropertyValueFactory<>("comment"));
+        tvDuration.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
+        tvDistance.setCellValueFactory(new PropertyValueFactory<>("rating"));
     }
 
     @FXML

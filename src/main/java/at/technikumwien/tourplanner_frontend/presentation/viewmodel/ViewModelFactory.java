@@ -13,7 +13,6 @@ public enum ViewModelFactory {
     private EditTourLogViewModel editTourLogViewModel;
 
 
-    // private AddTourViewModel addTourViewModel;
 
     public MainWindowViewModel getMainWindowViewModel() {
         if (mainWindowViewModel == null) {

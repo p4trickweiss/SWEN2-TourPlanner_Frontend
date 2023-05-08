@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 
 public class TourLogsViewModel {
-    private ObservableList<TourLog> tourLogs;
+    private final ObservableList<TourLog> tourLogs;
     private final TourPlannerManager manager;
 
     public TourLogsViewModel() {
@@ -30,7 +30,6 @@ public class TourLogsViewModel {
     public void changeTourLogs(Tour currentTour) {
         this.tourLogs.clear();
         this.tourLogs.addAll(currentTour.getTourLogs());
-        System.out.println(this.tourLogs.size());
     }
 
     public void addTourLog(){

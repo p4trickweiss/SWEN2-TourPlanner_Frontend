@@ -24,14 +24,13 @@ public class HttpRequestBackend {
         }
         catch (Exception e) {
             //e.printStackTrace();
-            System.out.println(e.getMessage());
             throw new Exception();
         }
     }
 
-    public HttpResponse<String> sendDeleteRequest(String endpoint, Long id) throws Exception{
+    public HttpResponse<String> sendDeleteRequest(String endpoint) throws Exception{
         try {
-            URI uri = new URI("http://localhost:8080/api/" + endpoint + "/" + id.toString());
+            URI uri = new URI("http://localhost:8080/api/" + endpoint);
             HttpRequest httpRequest = HttpRequest.newBuilder()
                     .uri(uri)
                     .DELETE()
@@ -41,7 +40,6 @@ public class HttpRequestBackend {
         }
         catch (Exception e) {
             //e.printStackTrace();
-            System.out.println("in catch");
             throw new Exception();
         }
     }
@@ -59,7 +57,23 @@ public class HttpRequestBackend {
         }
         catch (Exception e) {
             //e.printStackTrace();
-            System.out.println("in catch");
+            throw new Exception();
+        }
+    }
+
+    public HttpResponse<String> sendPutRequest(String endpoint, String body) throws Exception {
+        try {
+            URI uri = new URI("http://localhost:8080/api/" + endpoint);
+            HttpRequest httpRequest = HttpRequest.newBuilder()
+                    .uri(uri)
+                    .header("Content-Type", "application/json")
+                    .PUT(HttpRequest.BodyPublishers.ofString(body))
+                    .build();
+            HttpResponse<String> response = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            return response;
+        }
+        catch (Exception e) {
+            //e.printStackTrace();
             throw new Exception();
         }
     }
