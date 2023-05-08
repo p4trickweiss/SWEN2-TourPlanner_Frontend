@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.technikumwien.tourplanner_frontend.presentation.controller.AddTourController">
+
+    <Label text="name:" />
+
+    <TextField fx:id="name" />
+
+    <Label text="from:" />
+
+    <TextField fx:id="tour_from" />
+
+    <Label text="to:" />
+
+    <TextField fx:id="tour_to" />
+
+    <Label text="transport type:" />
+
+    <TextField fx:id="transport_type" />
+
+    <Label text="tour description:" />
+
+    <TextField fx:id="tour_description" />
+
+    <Button text="submit" fx:id="submit_button" onAction="#addTourAction"/>
+
+</VBox>
