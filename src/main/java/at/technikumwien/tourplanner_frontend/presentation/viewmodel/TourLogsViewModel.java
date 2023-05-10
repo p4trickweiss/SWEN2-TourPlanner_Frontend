@@ -16,6 +16,7 @@ import java.net.URL;
 
 public class TourLogsViewModel {
     private final ObservableList<TourLog> tourLogs;
+    private TourLog currentTourLog;
     private final TourPlannerManager manager;
 
     public TourLogsViewModel() {
@@ -48,8 +49,9 @@ public class TourLogsViewModel {
         }
     }
 
-    public void editTourLog(){
+    public void editTourLog(TourLog tourLog){
         try{
+            this.currentTourLog = tourLog;
             URL fxmlLocation = Main.class.getResource("editTourLog.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
             Parent root1 = (Parent) fxmlLoader.load();
