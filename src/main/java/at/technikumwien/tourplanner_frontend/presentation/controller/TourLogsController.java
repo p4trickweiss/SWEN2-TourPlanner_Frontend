@@ -1,5 +1,6 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
+import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.model.TourLog;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourLogsViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
@@ -10,6 +11,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -29,12 +32,16 @@ public class TourLogsController implements Initializable {
     @FXML
     public TableColumn<TourLog, String> tvDistance;
 
+    private TourLog currentTourLog;
+
     private final TourLogsViewModel tourLogsViewModel = ViewModelFactory.INSTANCE.getTourLogsViewModel();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableViewTourLogs.setItems(tourLogsViewModel.getTourLogs());
         formatTableCells();
+
+        setCurrentItem();
     }
 
     private void formatTableCells() {
@@ -42,4 +49,24 @@ public class TourLogsController implements Initializable {
         tvDuration.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
         tvDistance.setCellValueFactory(new PropertyValueFactory<>("rating"));
     }
+
+    private void setCurrentItem() {
+        tableViewTourLogs.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            if ((newValue != null) && (oldValue != newValue)) {
+                currentTourLog = newValue;
+            }
+        });
+    }
+
+    @FXML
+    public void addTourLog(){
+        tourLogsViewModel.addTourLog();
+    }
+
+    @FXML
+    public void editTourLog(){
+        tourLogsViewModel.editTourLog(currentTourLog);
+    }
+
+
 }

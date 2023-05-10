@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<VBox xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.technikumwien.tourplanner_frontend.presentation.controller.exportTourController">
+
+    <ComboBox fx:id="cb">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Tour"/>
+                <String fx:value="Summary"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Label text="Path:" />
+
+    <TextField fx:id="path" />
+
+    <Button text="submit" fx:id="submit_button" onAction="#export"/>
+
+</VBox>

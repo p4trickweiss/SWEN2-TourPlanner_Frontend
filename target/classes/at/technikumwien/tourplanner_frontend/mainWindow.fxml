@@ -11,7 +11,7 @@
         <menus>
             <Menu text="File">
                 <items>
-                    <MenuItem text="Export" />
+                    <MenuItem text="Export" onAction="#openExportPopup"/>
                 </items>
             </Menu>
             <Menu text="Edit">

@@ -31,6 +31,10 @@ public class TourListViewModel {
         this.currentTour = currentTour;
     }
 
+    public Tour getCurrentTour(){
+        return this.currentTour;
+    }
+
     public void changeLogs() {
         this.tourLogsViewModel.changeTourLogs(currentTour);
     }

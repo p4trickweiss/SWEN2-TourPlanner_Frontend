@@ -8,6 +8,10 @@ public enum ViewModelFactory {
     private TourLogsViewModel tourLogsViewModel;
     private AddTourViewModel addTourViewModel;
     private EditTourViewModel editTourViewModel;
+    private ExportTourViewModel exportTourViewModel;
+    private AddTourLogViewModel addTourLogViewModel;
+    private EditTourLogViewModel editTourLogViewModel;
+
 
 
     public MainWindowViewModel getMainWindowViewModel() {
@@ -43,5 +47,26 @@ public enum ViewModelFactory {
             editTourViewModel = new EditTourViewModel();
         }
         return editTourViewModel;
+    }
+
+    public ExportTourViewModel getExportTourViewModel(){
+        if(exportTourViewModel == null){
+            exportTourViewModel = new ExportTourViewModel();
+        }
+        return exportTourViewModel;
+    }
+
+    public AddTourLogViewModel getAddTourLogViewModel(){
+        if(addTourLogViewModel == null){
+            addTourLogViewModel = new AddTourLogViewModel();
+        }
+        return addTourLogViewModel;
+    }
+
+    public EditTourLogViewModel getEditTourLogViewModel(){
+        if(editTourLogViewModel == null){
+            editTourViewModel = new EditTourViewModel();
+        }
+        return editTourLogViewModel;
     }
 }
