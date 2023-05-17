@@ -27,6 +27,21 @@
         <Tab text="Route" closable="false">
                 <ImageView fx:id="imageView" preserveRatio="true" />
         </Tab>
-        <Tab text="Misc" closable="false"/>
+        <Tab text="Misc" closable="false">
+            <content>
+                <TableView fx:id="tableViewMisc">
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                    <columns>
+                        <TableColumn fx:id="time_stamp"/>
+                        <TableColumn fx:id="comment"/>
+                        <TableColumn fx:id="difficulty"/>
+                        <TableColumn fx:id="total_time"/>
+                        <TableColumn fx:id="rating"/>
+                    </columns>
+                </TableView>
+            </content>
+        </Tab>
     </TabPane>
 </VBox>

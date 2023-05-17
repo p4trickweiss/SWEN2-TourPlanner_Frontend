@@ -54,6 +54,7 @@ public class TourLogsController implements Initializable {
         tableViewTourLogs.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             if ((newValue != null) && (oldValue != newValue)) {
                 currentTourLog = newValue;
+                tourLogsViewModel.changeMisc(currentTourLog);
             }
         });
     }

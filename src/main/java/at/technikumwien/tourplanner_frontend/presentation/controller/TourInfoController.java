@@ -34,6 +34,17 @@ public class TourInfoController implements Initializable {
     @FXML
     public TableView<Tour> tableViewTourDetails;
 
+    public TableColumn<Tour, String> time_stamp;
+    @FXML
+    public TableColumn<Tour, String> comment;
+    @FXML
+    public TableColumn<Tour, String> difficulty;
+    @FXML
+    public TableColumn<Tour, String> total_time;
+    @FXML
+    public TableColumn<Tour, String> rating;
+    @FXML
+    public TableView<Tour> tableViewMisc;
     private final TourInfoViewModel tourInfoViewModel = ViewModelFactory.INSTANCE.getTourInfoViewModel();
 
     @Override
@@ -55,6 +66,14 @@ public class TourInfoController implements Initializable {
                 return null;
             }
         }, tourInfoViewModel.imagePathProperty()));
+
+        // Misc-Daten binden
+        time_stamp.textProperty().bindBidirectional(tourInfoViewModel.time_stampProperty());
+        comment.textProperty().bindBidirectional(tourInfoViewModel.commentProperty());
+        difficulty.textProperty().bindBidirectional(tourInfoViewModel.difficultyProperty());
+        total_time.textProperty().bindBidirectional(tourInfoViewModel.total_timeProperty());
+        rating.textProperty().bindBidirectional(tourInfoViewModel.ratingProperty());
+
 
     }
 
