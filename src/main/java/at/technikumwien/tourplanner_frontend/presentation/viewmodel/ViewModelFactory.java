@@ -12,6 +12,7 @@ public enum ViewModelFactory {
     private AddTourLogViewModel addTourLogViewModel;
     private EditTourLogViewModel editTourLogViewModel;
 
+    private TourInfoViewModel tourInfoViewModel;
 
 
     public MainWindowViewModel getMainWindowViewModel() {
@@ -68,5 +69,12 @@ public enum ViewModelFactory {
             editTourViewModel = new EditTourViewModel();
         }
         return editTourLogViewModel;
+    }
+
+    public TourInfoViewModel getTourInfoViewModel(){
+        if(tourInfoViewModel == null){
+            tourInfoViewModel = new TourInfoViewModel();
+        }
+        return tourInfoViewModel;
     }
 }

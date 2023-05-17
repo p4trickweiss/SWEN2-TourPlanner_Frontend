@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.swing.text.View;
 import java.net.URL;
 
 public class TourListViewModel {
@@ -18,12 +19,14 @@ public class TourListViewModel {
     private Tour currentTour;
     private final TourLogsViewModel tourLogsViewModel;
     private final EditTourViewModel editTourViewModel;
+    private final TourInfoViewModel tourInfoViewModel;
     private final TourPlannerManager manager;
 
     public TourListViewModel() {
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
         tourLogsViewModel = ViewModelFactory.INSTANCE.getTourLogsViewModel();
         editTourViewModel = ViewModelFactory.INSTANCE.getEditTourViewModel();
+        tourInfoViewModel = ViewModelFactory.INSTANCE.getTourInfoViewModel();
         this.tours = FXCollections.observableArrayList();
     }
 
@@ -37,6 +40,10 @@ public class TourListViewModel {
 
     public void changeLogs() {
         this.tourLogsViewModel.changeTourLogs(currentTour);
+    }
+
+    public void changeDetails(){
+        this.tourInfoViewModel.changeTourDetails(currentTour);
     }
 
     public ObservableList<Tour> getTours() {

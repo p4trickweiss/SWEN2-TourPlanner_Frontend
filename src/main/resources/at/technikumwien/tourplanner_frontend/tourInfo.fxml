@@ -1,16 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="at.technikumwien.tourplanner_frontend.presentation.controller.TourInfoController">
     <TabPane>
-        <Tab text="General" closable="false" />
-        <Tab text="Route" closable="false"/>
-        <Tab text="Misc" closable="false"/>
+        <Tab text="General" closable="false" >
+            <content>
+                    <TableView fx:id="tableViewTourDetails">
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                        <columns>
+                            <TableColumn fx:id="tour_description" text="route information" />
+                            <TableColumn fx:id="tour_distance" prefWidth="86.5" text="tour Distance" />
+                            <TableColumn fx:id="tour_from" prefWidth="86.5" text="tour from" />
+                            <TableColumn fx:id="tour_to" prefWidth="86.5" text="tour to" />
+                            <TableColumn fx:id="transport_type" prefWidth="86.5" text="transport type" />
+                        </columns>
+                    </TableView>
+            </content>
+        </Tab>
+        <Tab text="Route" closable="false">
+                <ImageView fx:id="imageView" preserveRatio="true" />
+        </Tab>
+        <Tab text="Misc" closable="false">
+            <content>
+                <TableView fx:id="tableViewMisc">
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                    <columns>
+                        <TableColumn fx:id="time_stamp"/>
+                        <TableColumn fx:id="comment"/>
+                        <TableColumn fx:id="difficulty"/>
+                        <TableColumn fx:id="total_time"/>
+                        <TableColumn fx:id="rating"/>
+                    </columns>
+                </TableView>
+            </content>
+        </Tab>
     </TabPane>
 </VBox>

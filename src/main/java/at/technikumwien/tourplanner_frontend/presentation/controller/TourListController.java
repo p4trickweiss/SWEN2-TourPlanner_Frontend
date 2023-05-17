@@ -54,6 +54,7 @@ public class TourListController implements Initializable {
                 currentTour = newValue;
                 tourListViewModel.setCurrentTour(currentTour);
                 tourListViewModel.changeLogs();
+                tourListViewModel.changeDetails();
             }
         });
     }

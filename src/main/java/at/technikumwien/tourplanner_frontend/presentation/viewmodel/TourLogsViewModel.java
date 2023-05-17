@@ -19,6 +19,8 @@ public class TourLogsViewModel {
     private TourLog currentTourLog;
     private final TourPlannerManager manager;
 
+    private final TourInfoViewModel tourInfoViewModel = ViewModelFactory.INSTANCE.getTourInfoViewModel();
+
     public TourLogsViewModel() {
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
         this.tourLogs = FXCollections.observableArrayList();
@@ -31,6 +33,10 @@ public class TourLogsViewModel {
     public void changeTourLogs(Tour currentTour) {
         this.tourLogs.clear();
         this.tourLogs.addAll(currentTour.getTourLogs());
+    }
+
+    public void changeMisc(TourLog currentTourLog){
+        this.tourInfoViewModel.changeMisc(currentTourLog);
     }
 
     public void addTourLog(){
