@@ -17,21 +17,21 @@ public class Main extends Application {
         logger.info("Application started");
         // fxml created with SceneBuilder
         Parent root = FXMLLoader.load(Main.class.getResource("mainWindow.fxml"));
-        System.out.println("fxml loaded");
+        logger.info("fxml loaded");
 
         // bootstrap "window" named stage
         primaryStage.setTitle("Tour Planner");
-        System.out.println("set title");
+        logger.info("set title");
 
         // set scene into stage in defined size
         primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.setMinWidth(400);
         primaryStage.setMinHeight(400);
-        System.out.println("set scene");
+        logger.info("set scene");
 
         // let's go
         primaryStage.show();
-        System.out.println("show stage");
+        logger.info("show stage");
     }
 
     public static void main(String[] args) {

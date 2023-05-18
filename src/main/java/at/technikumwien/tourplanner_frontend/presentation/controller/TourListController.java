@@ -8,11 +8,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TourListController implements Initializable {
+    private static Logger logger = LogManager.getLogger(TourListController.class);
     @FXML
     public ListView<Tour> listViewTours;
     @FXML
@@ -28,6 +31,8 @@ public class TourListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        logger.info("TourListController init");
+
         listViewTours.setItems(tourListViewModel.getTours());
         formatCells();
 

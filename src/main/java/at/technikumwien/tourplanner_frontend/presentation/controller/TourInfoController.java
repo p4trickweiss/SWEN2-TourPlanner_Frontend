@@ -12,15 +12,19 @@ import javafx.scene.image.Image;
 
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class TourInfoController implements Initializable {
+    private static Logger logger = LogManager.getLogger(TourInfoController.class);
+
     @FXML
     public ImageView imageView;
-
     @FXML
     public TableColumn<Tour, String> tour_description;
     @FXML
@@ -49,6 +53,7 @@ public class TourInfoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        logger.info("TourInfoController init");
 
         tour_description.textProperty().bindBidirectional(tourInfoViewModel.tour_descriptionProperty());
         tour_distance.textProperty().bindBidirectional(tourInfoViewModel.tour_distanceProperty());

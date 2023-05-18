@@ -18,15 +18,13 @@ public class MainWindowController implements Initializable {
     private static Logger logger = LogManager.getLogger(MainWindowController.class);
     private TourPlannerManager manager;
 
-    public MainWindowController() {
-        logger.info("MainWindowController created");
-    }
+    public MainWindowController() {}
 
     private final MainWindowViewModel mainWindowViewModel = ViewModelFactory.INSTANCE.getMainWindowViewModel();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("MainWindowController init");
+        logger.info("MainWindowController init");
 
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
     }

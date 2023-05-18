@@ -10,6 +10,8 @@ import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFac
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 import java.awt.*;
@@ -18,6 +20,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EditTourController implements Initializable {
+    private static Logger logger = LogManager.getLogger(EditTourController.class);
+
     @FXML
     public TextField name;
     @FXML
@@ -32,12 +36,12 @@ public class EditTourController implements Initializable {
     private final EditTourViewModel editTourViewModel = ViewModelFactory.INSTANCE.getEditTourViewModel();
     private final TourListViewModel tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();
 
-    public EditTourController(){
-        System.out.println("EditTourController created");
-    }
+    public EditTourController(){}
 
     @Override
     public void initialize(URL ulr, ResourceBundle resourceBundle){
+        logger.info("EditTourController created");
+        
         name.textProperty().bindBidirectional(editTourViewModel.nameProperty());
         tour_description.textProperty().bindBidirectional(editTourViewModel.tour_descriptionProperty());
         tour_from.textProperty().bindBidirectional(editTourViewModel.tour_fromProperty());

@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +19,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TourLogsController implements Initializable {
+    private static Logger logger = LogManager.getLogger(TourLogsController.class);
+
     @FXML
     public Button btnAddTourLog;
     @FXML
@@ -38,6 +42,8 @@ public class TourLogsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        logger.info("TourLogsController init");
+
         tableViewTourLogs.setItems(tourLogsViewModel.getTourLogs());
         formatTableCells();
 

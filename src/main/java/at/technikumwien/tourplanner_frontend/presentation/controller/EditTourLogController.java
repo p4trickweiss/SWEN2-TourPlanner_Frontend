@@ -10,12 +10,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EditTourLogController implements Initializable {
+    private static Logger logger = LogManager.getLogger(EditTourController.class);
+
     public TextField comment;
     @FXML
     public TextField difficulty;
@@ -30,12 +34,12 @@ public class EditTourLogController implements Initializable {
 
     private final EditTourLogViewModel editTourLogViewModel = ViewModelFactory.INSTANCE.getEditTourLogViewModel();
 
-    public EditTourLogController(){
-        System.out.println("EditTourLogController created");
-    }
+    public EditTourLogController(){}
 
     @Override
     public void initialize(URL ulr, ResourceBundle resourceBundle){
+        logger.info("EditTourLogController created");
+
         // Current Item missing
     }
 

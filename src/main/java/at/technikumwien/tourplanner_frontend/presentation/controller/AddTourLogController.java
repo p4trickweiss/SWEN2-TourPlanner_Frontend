@@ -10,11 +10,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddTourLogController implements Initializable {
+    private static Logger logger = LogManager.getLogger(AddTourController.class);
+
     @FXML
     public TextField comment;
     @FXML
@@ -30,13 +34,11 @@ public class AddTourLogController implements Initializable {
 
     private final AddTourLogViewModel addTourLogViewModel = ViewModelFactory.INSTANCE.getAddTourLogViewModel();
 
-    public AddTourLogController(){
-        System.out.println("AddTourLogController created");
-    }
+    public AddTourLogController(){}
 
     @Override
     public void initialize(URL ulr, ResourceBundle resourceBundle){
-
+        logger.info("AddTourLogController init");
     }
 
     @FXML
