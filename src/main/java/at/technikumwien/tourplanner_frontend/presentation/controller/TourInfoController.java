@@ -55,7 +55,7 @@ public class TourInfoController implements Initializable {
         tour_from.textProperty().bindBidirectional(tourInfoViewModel.tour_fromProperty());
         tour_to.textProperty().bindBidirectional(tourInfoViewModel.tour_toProperty());
         transport_type.textProperty().bindBidirectional(tourInfoViewModel.transport_typeProperty());
-        //Tabelle befülle
+        //Tabelle befüllen
 
         // Image anzeigen lassen
         imageView.imageProperty().bind(Bindings.createObjectBinding(() -> {
