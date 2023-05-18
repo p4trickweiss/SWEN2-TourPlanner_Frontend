@@ -5,11 +5,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Main extends Application {
 
+    private static Logger logger = LogManager.getLogger(Main.class);
+
     @Override
     public void start(Stage primaryStage) throws Exception{
+        logger.info("Application started");
         // fxml created with SceneBuilder
         Parent root = FXMLLoader.load(Main.class.getResource("mainWindow.fxml"));
         System.out.println("fxml loaded");

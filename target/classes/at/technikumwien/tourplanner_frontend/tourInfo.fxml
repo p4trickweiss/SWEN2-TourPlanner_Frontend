@@ -34,11 +34,11 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
                     </columnResizePolicy>
                     <columns>
-                        <TableColumn fx:id="time_stamp"/>
-                        <TableColumn fx:id="comment"/>
-                        <TableColumn fx:id="difficulty"/>
-                        <TableColumn fx:id="total_time"/>
-                        <TableColumn fx:id="rating"/>
+                        <TableColumn fx:id="time_stamp" text="Time Stamp"/>
+                        <TableColumn fx:id="comment" text="Comment"/>
+                        <TableColumn fx:id="difficulty" text="Difficulty"/>
+                        <TableColumn fx:id="total_time" text="Total Time"/>
+                        <TableColumn fx:id="rating" text="Rating"/>
                     </columns>
                 </TableView>
             </content>

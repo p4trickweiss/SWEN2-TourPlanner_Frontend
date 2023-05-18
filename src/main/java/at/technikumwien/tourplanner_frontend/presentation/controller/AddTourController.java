@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddTourController implements Initializable {
+
     @FXML
     public TextField name;
     @FXML

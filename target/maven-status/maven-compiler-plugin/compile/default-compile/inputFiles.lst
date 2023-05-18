@@ -1,5 +1,6 @@
 /Users/patrick/Dev/SWEN2/semester project/SWEN2-TourPlanner_Frontend/src/main/java/at/technikumwien/tourplanner_frontend/presentation/viewmodel/AddTourViewModel.java
 /Users/patrick/Dev/SWEN2/semester project/SWEN2-TourPlanner_Frontend/src/main/java/at/technikumwien/tourplanner_frontend/model/NewTour.java
+/Users/patrick/Dev/SWEN2/semester project/SWEN2-TourPlanner_Frontend/src/main/java/at/technikumwien/tourplanner_frontend/logging/LogggingFactory.java
 /Users/patrick/Dev/SWEN2/semester project/SWEN2-TourPlanner_Frontend/src/main/java/at/technikumwien/tourplanner_frontend/presentation/viewmodel/ViewModelFactory.java
 /Users/patrick/Dev/SWEN2/semester project/SWEN2-TourPlanner_Frontend/src/main/java/at/technikumwien/tourplanner_frontend/presentation/viewmodel/EditTourViewModel.java
 /Users/patrick/Dev/SWEN2/semester project/SWEN2-TourPlanner_Frontend/src/main/java/at/technikumwien/tourplanner_frontend/model/NewTourLog.java
