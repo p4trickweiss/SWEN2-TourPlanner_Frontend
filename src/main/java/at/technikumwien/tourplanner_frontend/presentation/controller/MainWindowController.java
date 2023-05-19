@@ -6,23 +6,25 @@ import at.technikumwien.tourplanner_frontend.presentation.viewmodel.MainWindowVi
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.text.View;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
+
+    private static Logger logger = LogManager.getLogger(MainWindowController.class);
     private TourPlannerManager manager;
 
-    public MainWindowController() {
-        System.out.println("MainWindowController created");
-    }
+    public MainWindowController() {}
 
     private final MainWindowViewModel mainWindowViewModel = ViewModelFactory.INSTANCE.getMainWindowViewModel();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("MainWindowController init");
+        logger.info("MainWindowController init");
 
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
     }

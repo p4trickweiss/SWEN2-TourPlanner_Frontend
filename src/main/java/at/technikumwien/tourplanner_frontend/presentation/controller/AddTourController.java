@@ -7,12 +7,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddTourController implements Initializable {
+    private static Logger logger = LogManager.getLogger(AddTourController.class);
+
     @FXML
     public TextField name;
     @FXML
@@ -29,11 +33,12 @@ public class AddTourController implements Initializable {
 
     private final AddTourViewModel addTourViewModel = ViewModelFactory.INSTANCE.getAddTourViewModel();
 
-    public AddTourController(){
-    }
+    public AddTourController(){}
 
     @Override
     public void initialize(URL ulr, ResourceBundle resourceBundle){
+        logger.info("AddTourController init");
+
         name.textProperty().bindBidirectional(addTourViewModel.nameProperty());
         tour_description.textProperty().bindBidirectional(addTourViewModel.tour_descriptionProperty());
         tour_from.textProperty().bindBidirectional(addTourViewModel.tour_fromProperty());

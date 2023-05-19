@@ -1,33 +1,30 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
-import at.technikumwien.tourplanner_frontend.model.NewTour;
-import at.technikumwien.tourplanner_frontend.presentation.viewmodel.AddTourViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ExportTourViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import javax.swing.text.View;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class exportTourController implements Initializable {
+public class ExportTourController implements Initializable {
+    private static Logger logger = LogManager.getLogger(ExportTourController.class);
     @FXML
     public ComboBox cb;
     @FXML
     public TextField path;
     private final ExportTourViewModel exportTourViewModel = ViewModelFactory.INSTANCE.getExportTourViewModel();
 
-    public exportTourController(){
-        System.out.println("ExportTourController created");
-    }
+    public ExportTourController(){}
 
     @Override
     public void initialize(URL ulr, ResourceBundle resourceBundle){
-        System.out.println("AddTourController created");
+        logger.info("ExportTourController created");
     }
 
     @FXML
@@ -39,7 +36,7 @@ public class exportTourController implements Initializable {
             exportTourViewModel.exportSummary(path.getText());
         }
         else{
-            System.out.printf("You have to set the export type!");
+            logger.warn("Export Type is not set");
         }
     }
 

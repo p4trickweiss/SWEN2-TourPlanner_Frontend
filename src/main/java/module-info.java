@@ -8,6 +8,8 @@ module tourplanner_frontend {
     requires com.fasterxml.jackson.databind;
     requires kernel;
     requires layout;
+    requires org.apache.logging.log4j;
+    requires org.apache.logging.log4j.core;
 
     opens at.technikumwien.tourplanner_frontend to javafx.graphics, javafx.fxml;
     exports at.technikumwien.tourplanner_frontend;
@@ -17,5 +19,5 @@ module tourplanner_frontend {
     opens at.technikumwien.tourplanner_frontend.presentation.viewmodel to javafx.fxml, javafx.graphics;
 
     exports at.technikumwien.tourplanner_frontend.model;
-    opens at.technikumwien.tourplanner_frontend.model to com.fasterxml.jackson.databind, com.fasterxml.jackson.datatype;
+    opens at.technikumwien.tourplanner_frontend.model to com.fasterxml.jackson.databind; //com.fasterxml.jackson.datatype;
 }

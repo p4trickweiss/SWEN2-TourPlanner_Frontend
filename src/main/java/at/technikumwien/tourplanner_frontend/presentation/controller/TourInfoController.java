@@ -12,15 +12,19 @@ import javafx.scene.image.Image;
 
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class TourInfoController implements Initializable {
+    private static Logger logger = LogManager.getLogger(TourInfoController.class);
+
     @FXML
     public ImageView imageView;
-
     @FXML
     public TableColumn<Tour, String> tour_description;
     @FXML
@@ -49,13 +53,14 @@ public class TourInfoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        logger.info("TourInfoController init");
 
         tour_description.textProperty().bindBidirectional(tourInfoViewModel.tour_descriptionProperty());
         tour_distance.textProperty().bindBidirectional(tourInfoViewModel.tour_distanceProperty());
         tour_from.textProperty().bindBidirectional(tourInfoViewModel.tour_fromProperty());
         tour_to.textProperty().bindBidirectional(tourInfoViewModel.tour_toProperty());
         transport_type.textProperty().bindBidirectional(tourInfoViewModel.transport_typeProperty());
-        //Tabelle befülle
+        //Tabelle befüllen
 
         // Image anzeigen lassen
         imageView.imageProperty().bind(Bindings.createObjectBinding(() -> {
@@ -73,8 +78,6 @@ public class TourInfoController implements Initializable {
         difficulty.textProperty().bindBidirectional(tourInfoViewModel.difficultyProperty());
         total_time.textProperty().bindBidirectional(tourInfoViewModel.total_timeProperty());
         rating.textProperty().bindBidirectional(tourInfoViewModel.ratingProperty());
-
-
     }
 
 
