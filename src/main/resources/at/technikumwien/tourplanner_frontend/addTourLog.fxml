@@ -17,10 +17,6 @@
 
     <TextField fx:id="rating" />
 
-    <Label text="time_stamp:" />
-
-    <TextField fx:id="time_stamp" />
-
     <Label text="total_time:" />
 
     <TextField fx:id="total_time" />

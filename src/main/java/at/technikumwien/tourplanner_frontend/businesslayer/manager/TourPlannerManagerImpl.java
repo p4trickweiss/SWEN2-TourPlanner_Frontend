@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TourPlannerManagerImpl implements TourPlannerManager {
@@ -80,8 +79,15 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
     }
 
     @Override
-    public void editTourLog(NewTourLog tourlog){
-        System.out.printf("Test");
+    public void editTourLog(NewTourLog tourLog){
+        try {
+            String body = objectMapper.writeValueAsString(tourLog);
+            System.out.println(body);
+            HttpResponse<String> response = httpRequestBackend.sendPutRequest("tour-log", body);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

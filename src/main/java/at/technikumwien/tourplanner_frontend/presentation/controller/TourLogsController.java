@@ -1,6 +1,5 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
-import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.model.TourLog;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourLogsViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
@@ -13,8 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -72,7 +69,7 @@ public class TourLogsController implements Initializable {
 
     @FXML
     public void editTourLog(){
-        tourLogsViewModel.editTourLog(currentTourLog);
+        tourLogsViewModel.editTourLog();
     }
 
     @FXML

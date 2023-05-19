@@ -15,10 +15,9 @@ import javafx.stage.Stage;
 import java.net.URL;
 
 public class TourLogsViewModel {
+    private Tour currentTour;
     private final ObservableList<TourLog> tourLogs;
-    private TourLog currentTourLog;
     private final TourPlannerManager manager;
-
     private final TourInfoViewModel tourInfoViewModel = ViewModelFactory.INSTANCE.getTourInfoViewModel();
 
     public TourLogsViewModel() {
@@ -31,6 +30,7 @@ public class TourLogsViewModel {
     }
 
     public void changeTourLogs(Tour currentTour) {
+        this.currentTour = currentTour;
         this.tourLogs.clear();
         this.tourLogs.addAll(currentTour.getTourLogs());
     }
@@ -40,6 +40,7 @@ public class TourLogsViewModel {
     }
 
     public void addTourLog(){
+
         try{
             URL fxmlLocation = Main.class.getResource("addTourLog.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
@@ -51,13 +52,12 @@ public class TourLogsViewModel {
             stage.show();
         } catch (Exception e) {
             System.out.printf(e.getMessage());
-            System.out.printf("Cant load new window");
+            System.out.println("Cant load new window");
         }
     }
 
-    public void editTourLog(TourLog tourLog){
+    public void editTourLog(){
         try{
-            this.currentTourLog = tourLog;
             URL fxmlLocation = Main.class.getResource("editTourLog.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
             Parent root1 = (Parent) fxmlLoader.load();
@@ -68,11 +68,15 @@ public class TourLogsViewModel {
             stage.show();
         } catch (Exception e) {
             System.out.printf(e.getMessage());
-            System.out.printf("Cant load new window");
+            System.out.println("Cant load new window");
         }
     }
 
     public void deleteTourLog(TourLog currentTourLog) {
         manager.deleteTourLog(currentTourLog);
+    }
+
+    public Tour getCurrentTour() {
+        return currentTour;
     }
 }
