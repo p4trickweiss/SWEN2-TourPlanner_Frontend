@@ -2,17 +2,12 @@ package at.technikumwien.tourplanner_frontend.businesslayer.export;
 
 import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.model.TourLog;
-import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.properties.UnitValue;
 import javafx.collections.ObservableList;
-
-import javax.swing.text.StyleConstants;
-import java.lang.reflect.Field;
 
 public class PdfConverter {
 
