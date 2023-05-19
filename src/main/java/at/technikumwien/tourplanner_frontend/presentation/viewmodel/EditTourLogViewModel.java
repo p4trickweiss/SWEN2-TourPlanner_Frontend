@@ -2,19 +2,35 @@ package at.technikumwien.tourplanner_frontend.presentation.viewmodel;
 
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManager;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
+import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerImpl;
 import at.technikumwien.tourplanner_frontend.model.NewTourLog;
+import at.technikumwien.tourplanner_frontend.model.TourLog;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class EditTourLogViewModel {
+
+    private final SimpleObjectProperty<TourLog> currentTourLog = new SimpleObjectProperty<>();
     private final SimpleStringProperty comment = new SimpleStringProperty();
     private final SimpleStringProperty difficulty = new SimpleStringProperty();
     private final SimpleIntegerProperty rating = new SimpleIntegerProperty();
     private final SimpleStringProperty total_time = new SimpleStringProperty();
     private final TourPlannerManager manager;
 
+    private final TourInfoViewModel tourInfoViewModel;
+
     public EditTourLogViewModel(){
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
+        tourInfoViewModel = ViewModelFactory.INSTANCE.getTourInfoViewModel();
+        currentTourLog.addListener((observableValue, oldValue, newValue) -> {
+            if(newValue != null){
+                comment.set(newValue.getComment());
+                difficulty.set(newValue.getDifficulty());
+                rating.set(newValue.getRating());
+                total_time.set(newValue.getTotal_time());
+            }
+        });
     }
 
     public void editTour() {
@@ -26,6 +42,12 @@ public class EditTourLogViewModel {
                 0L
         );
         manager.editTourLog(newTourLog);
+
+        tourInfoViewModel.commentProperty().set(tourInfoViewModel.getComment());
+        tourInfoViewModel.difficultyProperty().set(tourInfoViewModel.getDifficulty());
+        tourInfoViewModel.ratingProperty().set(tourInfoViewModel.getRating());
+        tourInfoViewModel.total_timeProperty().set(tourInfoViewModel.getTotal_time());
+
     }
 
     public String getComment() {
@@ -74,5 +96,9 @@ public class EditTourLogViewModel {
 
     public void setTotal_time(String total_time) {
         this.total_time.set(total_time);
+    }
+
+    public SimpleObjectProperty<TourLog> currentTourLogProperty() {
+        return currentTourLog;
     }
 }

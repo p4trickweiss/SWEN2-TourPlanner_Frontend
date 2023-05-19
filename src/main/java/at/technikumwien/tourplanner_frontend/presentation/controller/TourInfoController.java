@@ -73,7 +73,7 @@ public class TourInfoController implements Initializable {
         comment.textProperty().bindBidirectional(tourInfoViewModel.commentProperty());
         difficulty.textProperty().bindBidirectional(tourInfoViewModel.difficultyProperty());
         total_time.textProperty().bindBidirectional(tourInfoViewModel.total_timeProperty());
-        rating.textProperty().bindBidirectional(tourInfoViewModel.ratingProperty());
+        rating.textProperty().bindBidirectional(tourInfoViewModel.ratingProperty(), java.text.NumberFormat.getIntegerInstance());
     }
 
 

@@ -66,7 +66,7 @@ public enum ViewModelFactory {
 
     public EditTourLogViewModel getEditTourLogViewModel(){
         if(editTourLogViewModel == null){
-            editTourViewModel = new EditTourViewModel();
+            editTourLogViewModel = new EditTourLogViewModel();
         }
         return editTourLogViewModel;
     }

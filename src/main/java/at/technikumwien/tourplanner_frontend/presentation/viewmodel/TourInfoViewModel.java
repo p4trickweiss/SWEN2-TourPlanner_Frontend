@@ -2,6 +2,7 @@ package at.technikumwien.tourplanner_frontend.presentation.viewmodel;
 
 import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.model.TourLog;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class TourInfoViewModel {
@@ -22,7 +23,7 @@ public class TourInfoViewModel {
     private final SimpleStringProperty comment = new SimpleStringProperty();
     private final SimpleStringProperty difficulty = new SimpleStringProperty();
     private final SimpleStringProperty total_time = new SimpleStringProperty();
-    private final SimpleStringProperty rating = new SimpleStringProperty();
+    private final SimpleIntegerProperty rating = new SimpleIntegerProperty();
 
 
     public TourInfoViewModel() {
@@ -45,7 +46,7 @@ public class TourInfoViewModel {
         comment.set(tourLog.getComment());
         difficulty.set(tourLog.getDifficulty());
         total_time.set(tourLog.getTotal_time());
-        rating.set(tourLog.getRating().toString());
+        rating.set(tourLog.getRating());
     }
 
 
@@ -146,11 +147,11 @@ public class TourInfoViewModel {
         return total_time;
     }
 
-    public String getRating() {
+    public int getRating() {
         return rating.get();
     }
 
-    public SimpleStringProperty ratingProperty() {
+    public SimpleIntegerProperty ratingProperty() {
         return rating;
     }
 }

@@ -58,13 +58,17 @@ public class TourLogsController implements Initializable {
             if ((newValue != null) && (oldValue != newValue)) {
                 currentTourLog = newValue;
                 tourLogsViewModel.changeMisc(currentTourLog);
+                tourLogsViewModel.setCurrentTourLog(currentTourLog);
+
             }
         });
     }
 
+
+
     @FXML
     public void addTourLog(){
-        tourLogsViewModel.addTourLog();
+        tourLogsViewModel.addTourLog(currentTourLog);
     }
 
     @FXML

@@ -15,7 +15,7 @@
 
         <Label text="rating:" />
 
-        <TextField fx:id="rating" />
+        <TextField fx:id="rating" onKeyTyped="#handleInput"/>
 
         <Label text="time_stamp:" />
 
