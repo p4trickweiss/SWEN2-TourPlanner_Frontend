@@ -1,23 +1,16 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
-import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourInfoViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
-
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.text.Text;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -65,7 +58,7 @@ public class TourInfoController implements Initializable {
         tour_to.textProperty().bindBidirectional(tourInfoViewModel.tour_toProperty());
         transport_type.textProperty().bindBidirectional(tourInfoViewModel.transport_typeProperty());
 
-        // Image anzeigen lassen
+        // Image
         imageView.imageProperty().bind(Bindings.createObjectBinding(() -> {
             String imagePath = tourInfoViewModel.imagePathProperty().get();
             if (imagePath != null && !imagePath.isEmpty()) {
@@ -75,7 +68,7 @@ public class TourInfoController implements Initializable {
             }
         }, tourInfoViewModel.imagePathProperty()));
 
-        // Misc-Daten binden
+        // Misc
         time_stamp.textProperty().bindBidirectional(tourInfoViewModel.time_stampProperty());
         comment.textProperty().bindBidirectional(tourInfoViewModel.commentProperty());
         difficulty.textProperty().bindBidirectional(tourInfoViewModel.difficultyProperty());

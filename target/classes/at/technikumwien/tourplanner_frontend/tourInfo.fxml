@@ -23,15 +23,15 @@
                     <RowConstraints/>
                     <RowConstraints/>
                 </rowConstraints>
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Tour Description"/>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Tour Description:"/>
                 <Text fx:id="tour_description" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="Tour Distance"/>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="Tour Distance:"/>
                 <Text fx:id="tour_distance" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="2" text="Tour From"/>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="2" text="Tour From:"/>
                 <Text fx:id="tour_from" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="3" text="Tour To"/>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="3" text="Tour To:"/>
                 <Text fx:id="tour_to" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="4" text="Transport Type"/>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="4" text="Transport Type:"/>
                 <Text fx:id="transport_type" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             </GridPane>
         </Tab>
@@ -53,15 +53,15 @@
                     <RowConstraints/>
                     <RowConstraints/>
                 </rowConstraints>
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Time Stamp"/>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Time Stamp:"/>
                 <Text fx:id="time_stamp" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="Comment"/>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="Comment:"/>
                 <Text fx:id="comment" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="2" text="Difficulty"/>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="2" text="Difficulty:"/>
                 <Text fx:id="difficulty" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="3" text="Total Time"/>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="3" text="Total Time:"/>
                 <Text fx:id="total_time" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="4" text="Rating"/>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="4" text="Rating:"/>
                 <Text fx:id="rating" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             </GridPane>
         </Tab>

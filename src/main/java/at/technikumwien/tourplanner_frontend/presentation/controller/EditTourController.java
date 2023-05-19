@@ -1,9 +1,5 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
-import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManager;
-import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
-import at.technikumwien.tourplanner_frontend.model.Tour;
-import at.technikumwien.tourplanner_frontend.model.TourLog;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.EditTourViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourListViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;

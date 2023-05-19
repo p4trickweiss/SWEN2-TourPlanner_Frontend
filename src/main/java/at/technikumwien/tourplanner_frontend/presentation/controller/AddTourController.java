@@ -1,6 +1,5 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
-import at.technikumwien.tourplanner_frontend.model.NewTour;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.AddTourViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
 import javafx.fxml.FXML;

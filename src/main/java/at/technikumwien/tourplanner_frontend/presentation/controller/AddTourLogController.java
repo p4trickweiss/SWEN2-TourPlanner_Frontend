@@ -46,7 +46,4 @@ public class AddTourLogController implements Initializable {
         addTourLogViewModel.addTourLog();
         //TODO close window
     }
-
-
-
 }

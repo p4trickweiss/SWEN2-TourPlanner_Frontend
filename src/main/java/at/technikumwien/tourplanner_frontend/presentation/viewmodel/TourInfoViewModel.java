@@ -1,8 +1,5 @@
 package at.technikumwien.tourplanner_frontend.presentation.viewmodel;
 
-import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManager;
-import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
-import at.technikumwien.tourplanner_frontend.model.NewTourLog;
 import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.model.TourLog;
 import javafx.beans.property.SimpleStringProperty;
