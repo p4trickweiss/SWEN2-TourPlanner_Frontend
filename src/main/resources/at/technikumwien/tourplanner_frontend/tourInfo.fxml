@@ -4,44 +4,66 @@
 <?import javafx.scene.control.*?>
 
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Text?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="at.technikumwien.tourplanner_frontend.presentation.controller.TourInfoController">
+
     <TabPane>
-        <Tab text="General" closable="false" >
-            <content>
-                    <TableView fx:id="tableViewTourDetails">
-                        <columnResizePolicy>
-                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                        </columnResizePolicy>
-                        <columns>
-                            <TableColumn fx:id="tour_description" text="route information" />
-                            <TableColumn fx:id="tour_distance" prefWidth="86.5" text="tour Distance" />
-                            <TableColumn fx:id="tour_from" prefWidth="86.5" text="tour from" />
-                            <TableColumn fx:id="tour_to" prefWidth="86.5" text="tour to" />
-                            <TableColumn fx:id="transport_type" prefWidth="86.5" text="transport type" />
-                        </columns>
-                    </TableView>
-            </content>
+        <Tab text="General" closable="false">
+            <GridPane VBox.vgrow="ALWAYS">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+                    <ColumnConstraints fx:id="textWidth" percentWidth="75" hgrow="ALWAYS"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Tour Description"/>
+                <Text fx:id="tour_description" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="Tour Distance"/>
+                <Text fx:id="tour_distance" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="2" text="Tour From"/>
+                <Text fx:id="tour_from" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="3" text="Tour To"/>
+                <Text fx:id="tour_to" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="4" text="Transport Type"/>
+                <Text fx:id="transport_type" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            </GridPane>
         </Tab>
+
         <Tab text="Route" closable="false">
                 <ImageView fx:id="imageView" preserveRatio="true" />
         </Tab>
+
         <Tab text="Misc" closable="false">
-            <content>
-                <TableView fx:id="tableViewMisc">
-                    <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
-                    </columnResizePolicy>
-                    <columns>
-                        <TableColumn fx:id="time_stamp" text="Time Stamp"/>
-                        <TableColumn fx:id="comment" text="Comment"/>
-                        <TableColumn fx:id="difficulty" text="Difficulty"/>
-                        <TableColumn fx:id="total_time" text="Total Time"/>
-                        <TableColumn fx:id="rating" text="Rating"/>
-                    </columns>
-                </TableView>
-            </content>
+            <GridPane VBox.vgrow="ALWAYS">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+                    <ColumnConstraints  percentWidth="75" hgrow="ALWAYS"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Time Stamp"/>
+                <Text fx:id="time_stamp" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="Comment"/>
+                <Text fx:id="comment" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="2" text="Difficulty"/>
+                <Text fx:id="difficulty" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="3" text="Total Time"/>
+                <Text fx:id="total_time" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="4" text="Rating"/>
+                <Text fx:id="rating" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            </GridPane>
         </Tab>
     </TabPane>
 </VBox>
