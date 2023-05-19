@@ -71,4 +71,8 @@ public class TourLogsViewModel {
             System.out.printf("Cant load new window");
         }
     }
+
+    public void deleteTourLog(TourLog currentTourLog) {
+        manager.deleteTourLog(currentTourLog);
+    }
 }

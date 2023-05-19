@@ -49,7 +49,6 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
     public void addTour(NewTour tour) {
         try {
             String body = objectMapper.writeValueAsString(tour);
-            System.out.println(body);
             HttpResponse<String> response = httpRequestBackend.sendPostRequest("tour", body);
         }
         catch (Exception e) {
@@ -69,13 +68,30 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
     }
 
     @Override
-    public void addTourLog(NewTourLog tourlog){
-        System.out.printf("Test");
+    public void addTourLog(NewTourLog tourLog){
+        try {
+            String body = objectMapper.writeValueAsString(tourLog);
+            System.out.println(body);
+            HttpResponse<String> response = httpRequestBackend.sendPostRequest("tour-log", body);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
     public void editTourLog(NewTourLog tourlog){
         System.out.printf("Test");
+    }
+
+    @Override
+    public void deleteTourLog(TourLog currentLog) {
+        try {
+            HttpResponse<String> response = httpRequestBackend.sendDeleteRequest("tour-log/" + currentLog.getId().toString());
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

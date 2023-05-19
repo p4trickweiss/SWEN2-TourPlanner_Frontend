@@ -26,11 +26,7 @@ public class EditTourLogController implements Initializable {
     @FXML
     public TextField rating;
     @FXML
-    public TextField time_stamp;
-    @FXML
     public TextField total_time;
-    @FXML
-    public Button submit_button;
 
     private final EditTourLogViewModel editTourLogViewModel = ViewModelFactory.INSTANCE.getEditTourLogViewModel();
 
@@ -45,7 +41,7 @@ public class EditTourLogController implements Initializable {
 
     @FXML
     public void editTourLogAction(){
-        NewTourLog tourLog = new NewTourLog(comment.getText(), difficulty.getText(), rating.getText(), time_stamp.getText(), total_time.getText());
+        NewTourLog tourLog = new NewTourLog(comment.getText(), difficulty.getText(), rating.getText(), total_time.getText());
         // id is maybe needed
         editTourLogViewModel.editTour(tourLog);
     }

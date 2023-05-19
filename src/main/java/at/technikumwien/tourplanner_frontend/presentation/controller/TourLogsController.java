@@ -75,5 +75,8 @@ public class TourLogsController implements Initializable {
         tourLogsViewModel.editTourLog(currentTourLog);
     }
 
-
+    @FXML
+    public void deleteTourLog() {
+        tourLogsViewModel.deleteTourLog(currentTourLog);
+    }
 }

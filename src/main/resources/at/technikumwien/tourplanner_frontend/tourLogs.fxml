@@ -8,7 +8,7 @@
         <HBox spacing="5" GridPane.hgrow="ALWAYS">
             <Label text="Tour Logs" />
             <Button fx:id="btnAddTourLog" text="+" onAction="#addTourLog"/>
-            <Button fx:id="btnDeleteTourLog" text="-" />
+            <Button fx:id="btnDeleteTourLog" text="-" onAction="#deleteTourLog"/>
             <Button fx:id="btnEditTourLog" text="..." onAction="#editTourLog"/>
         </HBox>
             <TableView fx:id="tableViewTourLogs">

@@ -26,8 +26,6 @@ public class AddTourLogController implements Initializable {
     @FXML
     public TextField rating;
     @FXML
-    public TextField time_stamp;
-    @FXML
     public TextField total_time;
     @FXML
     public Button submit_button;
@@ -43,7 +41,7 @@ public class AddTourLogController implements Initializable {
 
     @FXML
     public void addTourLogAction(){
-        NewTourLog newTourLog = new NewTourLog(comment.getText(), difficulty.getText(), rating.getText(), time_stamp.getText(), total_time.getText());
+        NewTourLog newTourLog = new NewTourLog(comment.getText(), difficulty.getText(), rating.getText(), total_time.getText());
         addTourLogViewModel.addTourLog(newTourLog);
         //TODO close window
     }
