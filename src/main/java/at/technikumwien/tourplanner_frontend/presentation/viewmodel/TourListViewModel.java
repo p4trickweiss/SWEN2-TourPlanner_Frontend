@@ -4,6 +4,7 @@ import at.technikumwien.tourplanner_frontend.Main;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManager;
 import at.technikumwien.tourplanner_frontend.model.Tour;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -15,34 +16,31 @@ import java.net.URL;
 
 public class TourListViewModel {
     private final ObservableList<Tour> tours;
-    private Tour currentTour;
+    //private Tour currentTour;
+    private SimpleObjectProperty<Tour> currentTour = new SimpleObjectProperty<>();
     private final TourLogsViewModel tourLogsViewModel;
-    private final EditTourViewModel editTourViewModel;
-    private final TourInfoViewModel tourInfoViewModel;
     private final TourPlannerManager manager;
 
     public TourListViewModel() {
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
         tourLogsViewModel = ViewModelFactory.INSTANCE.getTourLogsViewModel();
-        editTourViewModel = ViewModelFactory.INSTANCE.getEditTourViewModel();
-        tourInfoViewModel = ViewModelFactory.INSTANCE.getTourInfoViewModel();
         this.tours = FXCollections.observableArrayList();
     }
 
     public void setCurrentTour(Tour currentTour) {
-        this.currentTour = currentTour;
+        this.currentTour.set(currentTour);
     }
 
     public Tour getCurrentTour(){
+        return this.currentTour.get();
+    }
+
+    public SimpleObjectProperty<Tour> currentTourProperty(){
         return this.currentTour;
     }
 
     public void changeLogs() {
-        this.tourLogsViewModel.changeTourLogs(currentTour);
-    }
-
-    public void changeDetails(){
-        this.tourInfoViewModel.changeTourDetails(currentTour);
+        this.tourLogsViewModel.changeTourLogs(currentTour.get());
     }
 
     public ObservableList<Tour> getTours() {
@@ -53,6 +51,9 @@ public class TourListViewModel {
     public void updateTourList() {
         tours.clear();
         tours.addAll(manager.getTours());
+        if(currentTour.get() != null){
+            currentTour.set(manager.getTours().stream().filter(e -> e.getId() == currentTour.get().getId()).findFirst().get());
+        }
     }
 
     public void deleteTour(Tour currentTour) {
@@ -77,7 +78,7 @@ public class TourListViewModel {
    }
 
    public void editTour() {
-        editTourViewModel.currentTourProperty().setValue(currentTour);
+
        try{
            URL fxmlLocation = Main.class.getResource("EditTour.fxml");
            FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);

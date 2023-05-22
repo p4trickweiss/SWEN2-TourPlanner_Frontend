@@ -5,6 +5,8 @@ import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFac
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.ColumnConstraints;
@@ -18,6 +20,8 @@ import java.util.ResourceBundle;
 public class TourInfoController implements Initializable {
     private static Logger logger = LogManager.getLogger(TourInfoController.class);
 
+    @FXML
+    public TabPane Tab;
     @FXML
     public ColumnConstraints textWidth;
     @FXML
@@ -43,6 +47,12 @@ public class TourInfoController implements Initializable {
     @FXML
     public Text rating;
     @FXML
+    public Text avg_distance;
+    @FXML
+    public Text avg_time;
+    @FXML
+    public Text avg_rating;
+    @FXML
     private final TourInfoViewModel tourInfoViewModel = ViewModelFactory.INSTANCE.getTourInfoViewModel();
 
     @Override
@@ -57,6 +67,10 @@ public class TourInfoController implements Initializable {
         tour_from.textProperty().bindBidirectional(tourInfoViewModel.tour_fromProperty());
         tour_to.textProperty().bindBidirectional(tourInfoViewModel.tour_toProperty());
         transport_type.textProperty().bindBidirectional(tourInfoViewModel.transport_typeProperty());
+        avg_distance.textProperty().bind(tourInfoViewModel.avg_distanceProperty().asString());
+        avg_time.textProperty().bind(tourInfoViewModel.avg_timeProperty().asString());
+        avg_rating.textProperty().bind(tourInfoViewModel.avg_ratingProperty().asString());
+
 
         // Image
         imageView.imageProperty().bind(Bindings.createObjectBinding(() -> {
@@ -67,6 +81,8 @@ public class TourInfoController implements Initializable {
                 return null;
             }
         }, tourInfoViewModel.imagePathProperty()));
+
+        imageView.fitHeightProperty().bind(Tab.heightProperty());
 
         // Misc
         time_stamp.textProperty().bindBidirectional(tourInfoViewModel.time_stampProperty());

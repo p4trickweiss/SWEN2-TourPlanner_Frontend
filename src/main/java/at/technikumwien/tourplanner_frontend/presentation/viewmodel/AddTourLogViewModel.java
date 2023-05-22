@@ -33,6 +33,7 @@ public class AddTourLogViewModel {
         );
         manager.addTourLog(newTourLog);
         this.tourListViewModel.updateTourList();
+        tourLogsViewModel.updateTourLogs();
     }
 
     public String getComment() {

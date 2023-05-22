@@ -9,6 +9,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import javax.swing.text.View;
+
 public class EditTourLogViewModel {
 
     private final SimpleObjectProperty<TourLog> currentTourLog = new SimpleObjectProperty<>();
@@ -16,13 +18,14 @@ public class EditTourLogViewModel {
     private final SimpleStringProperty difficulty = new SimpleStringProperty();
     private final SimpleIntegerProperty rating = new SimpleIntegerProperty();
     private final SimpleStringProperty total_time = new SimpleStringProperty();
-    private final TourPlannerManager manager;
+    private final TourPlannerManager manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
+    private final TourLogsViewModel tourLogsViewModel = ViewModelFactory.INSTANCE.getTourLogsViewModel();
+    private final TourListViewModel tourListViewModel;
 
-    private final TourInfoViewModel tourInfoViewModel;
 
     public EditTourLogViewModel(){
-        this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
-        tourInfoViewModel = ViewModelFactory.INSTANCE.getTourInfoViewModel();
+        this.tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();
+
         currentTourLog.addListener((observableValue, oldValue, newValue) -> {
             if(newValue != null){
                 comment.set(newValue.getComment());
@@ -31,6 +34,7 @@ public class EditTourLogViewModel {
                 total_time.set(newValue.getTotal_time());
             }
         });
+        currentTourLog.bind(tourLogsViewModel.currentTourLogProperty());
     }
 
     public void editTour() {
@@ -41,12 +45,12 @@ public class EditTourLogViewModel {
                 rating.get(),
                 0L
         );
-        manager.editTourLog(newTourLog);
-
-        tourInfoViewModel.commentProperty().set(tourInfoViewModel.getComment());
-        tourInfoViewModel.difficultyProperty().set(tourInfoViewModel.getDifficulty());
-        tourInfoViewModel.ratingProperty().set(tourInfoViewModel.getRating());
-        tourInfoViewModel.total_timeProperty().set(tourInfoViewModel.getTotal_time());
+        this.manager.editTourLog(newTourLog, currentTourLog.get().getId());
+        System.out.printf(currentTourLog.get().getId().toString());
+        //tourInfoViewModel.updateMisc();
+        //tourInfoViewModel.updateTour();
+        this.tourListViewModel.updateTourList();
+        this.tourLogsViewModel.updateTourLogs();
 
     }
 
@@ -98,7 +102,4 @@ public class EditTourLogViewModel {
         this.total_time.set(total_time);
     }
 
-    public SimpleObjectProperty<TourLog> currentTourLogProperty() {
-        return currentTourLog;
-    }
 }

@@ -13,6 +13,6 @@ public interface TourPlannerManager {
     void addTour(NewTour newTour);
     void editTour(NewTour tour, Long id);
     void addTourLog(NewTourLog newTour);
-    void editTourLog(NewTourLog tour);
+    void editTourLog(NewTourLog tour, Long id);
     void deleteTourLog(TourLog currentLog);
 }

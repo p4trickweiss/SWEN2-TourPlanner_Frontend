@@ -10,6 +10,7 @@ module tourplanner_frontend {
     requires layout;
     requires org.apache.logging.log4j;
     requires org.apache.logging.log4j.core;
+    requires io;
 
     opens at.technikumwien.tourplanner_frontend to javafx.graphics, javafx.fxml;
     exports at.technikumwien.tourplanner_frontend;

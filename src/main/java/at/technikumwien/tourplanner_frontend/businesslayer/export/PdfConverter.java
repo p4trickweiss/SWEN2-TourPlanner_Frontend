@@ -1,29 +1,40 @@
 package at.technikumwien.tourplanner_frontend.businesslayer.export;
 
+import at.technikumwien.tourplanner_frontend.businesslayer.calculator.StatsCalculator;
+import at.technikumwien.tourplanner_frontend.model.Stats;
 import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.model.TourLog;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.wmf.WmfImageData;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.properties.HorizontalAlignment;
 import javafx.collections.ObservableList;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.io.image.ImageDataFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class PdfConverter {
+
+    private StatsCalculator statsCalculator = new StatsCalculator();
 
     private Table addCellsFromTour(Table table, Tour tour){
         table.addCell(tour.getName());
         table.addCell(tour.getTour_description());
         table.addCell(tour.getTour_from());
         table.addCell(tour.getTour_to());
-        // Update empty fields
-        table.addCell("empty");
-        // Update empty fields
-        table.addCell("empty");
+        table.addCell(tour.getTour_distance());
         table.addCell(tour.getTransport_type());
-        // Update empty fields
-        table.addCell("empty");
-
+        table.addCell(tour.getEstimated_time());
         return table;
     }
     public void exportSelectedTour(Tour currentTour, String path){
@@ -35,7 +46,31 @@ public class PdfConverter {
             Paragraph tableHeader = new Paragraph("Tour Information").setFontSize(14).setBold();
             document.add(tableHeader);
 
+            //image
+            String imageUrl = currentTour.getRoute_information();
+            byte[] imageData = downloadImage(imageUrl);
+
+
+            // Bild zur PDF-Seite hinzufügen
+            Image image = new Image(ImageDataFactory.create(imageData));
+            image.scaleToFit(200,200);
+            image.setHorizontalAlignment(HorizontalAlignment.CENTER);
+            image.setMarginBottom(10);
+            document.add(image);
+
+
             Table tour_table = new Table(8);
+
+            tour_table.addHeaderCell("name");
+            tour_table.addHeaderCell("tour description");
+            tour_table.addHeaderCell("tour from");
+            tour_table.addHeaderCell("tour to");
+            tour_table.addHeaderCell("tour distance");
+            tour_table.addHeaderCell("transport type");
+            tour_table.addHeaderCell("estimated time");
+            tour_table.addHeaderCell("Average rating");
+            tour_table.addHeaderCell("Average time");
+            tour_table.addHeaderCell("Average difficulty");
 
             tour_table = addCellsFromTour(tour_table, currentTour);
 
@@ -91,21 +126,21 @@ public class PdfConverter {
                 return;
             }
 
+
             Paragraph tours_header = new Paragraph("Tours: ").setFontSize(14).setBold();
             document.add(tours_header);
 
 
-            Table tour_table = new Table(8);
+            Table tour_table = new Table(7);
             tour_table.setFontSize(10);
 
             tour_table.addHeaderCell("name");
-            tour_table.addHeaderCell("tour_description");
-            tour_table.addHeaderCell("tour_from");
-            tour_table.addHeaderCell("tour_to");
-            tour_table.addHeaderCell("tour_distance");
-            tour_table.addHeaderCell("route_information");
-            tour_table.addHeaderCell("transport_type");
-            tour_table.addHeaderCell("estimated_time");
+            tour_table.addHeaderCell("tour description");
+            tour_table.addHeaderCell("tour from");
+            tour_table.addHeaderCell("tour to");
+            tour_table.addHeaderCell("tour distance");
+            tour_table.addHeaderCell("transport type");
+            tour_table.addHeaderCell("estimated time");
 
             Table tourLogs_table = new Table(4);
             tourLogs_table.setFontSize(10);
@@ -126,32 +161,20 @@ public class PdfConverter {
             int sum_rating;
             int avg_rating;
 
+            Stats stats;
+
             for(int i = 0; i < tours.size(); i++){
                 Tour iterator = tours.get(i);
 
                 tour_table = addCellsFromTour(tour_table, iterator);
 
-                if(iterator.getTourLogs().size() > 0){
-                    //sum_time = 0;
-                    //sum_diff = 0;
-                    sum_rating = 0;
+                stats = statsCalculator.calculateTourAvg(iterator);
 
-                    for(int logs_i = 0; logs_i < iterator.getTourLogs().size(); i++){
-                        TourLog logIterator = iterator.getTourLogs().get(logs_i);
-                        //sum_time += logIterator.getTotal_time();
-                        //sum_diff += logIterator.getDifficulty();
-                        sum_rating += logIterator.getRating();
-                    }
+                tourLogs_table.addCell(iterator.getName());
+                tourLogs_table.addCell(String.valueOf(stats.getAvg_time()));
+                tourLogs_table.addCell(String.valueOf(stats.getAvg_distance()));
+                tourLogs_table.addCell(String.valueOf(stats.getAvg_rating()));
 
-                    //avg_time = sum_time / iterator.getTourLogs().size();
-                    //avg_diff = sum_diff / iterator.getTourLogs().size();
-                    avg_rating = sum_rating / iterator.getTourLogs().size();
-
-                    tourLogs_table.addCell(iterator.getName());
-                    tourLogs_table.addCell("Time");
-                    tourLogs_table.addCell("Difficulty");
-                    tourLogs_table.addCell(String.valueOf(avg_rating));
-                }
             }
 
             document.add(tour_table);
@@ -161,6 +184,16 @@ public class PdfConverter {
             System.out.printf(e.getMessage());
         }
 
+
+    }
+
+    private static byte[] downloadImage(String imageUrl) throws IOException {
+        URL url = new URL(imageUrl);
+        try (InputStream inputStream = url.openStream()) {
+            Path tempFile = Files.createTempFile("temp-image", ".jpg");
+            Files.copy(inputStream, tempFile, StandardCopyOption.REPLACE_EXISTING);
+            return Files.readAllBytes(tempFile);
+        }
     }
 
 }

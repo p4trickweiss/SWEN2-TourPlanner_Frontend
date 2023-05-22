@@ -79,11 +79,11 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
     }
 
     @Override
-    public void editTourLog(NewTourLog tourLog){
+    public void editTourLog(NewTourLog tourLog, Long id){
         try {
             String body = objectMapper.writeValueAsString(tourLog);
             System.out.println(body);
-            HttpResponse<String> response = httpRequestBackend.sendPutRequest("tour-log", body);
+            HttpResponse<String> response = httpRequestBackend.sendPutRequest("tour-log/" + id.toString(), body);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());

@@ -5,6 +5,7 @@ import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerMa
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
 import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.model.TourLog;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -16,17 +17,15 @@ import javax.swing.text.View;
 import java.net.URL;
 
 public class TourLogsViewModel {
+
     private Tour currentTour;
-    private TourLog currentTourLog;
+    private SimpleObjectProperty<TourLog> currentTourLog = new SimpleObjectProperty<>();
     private final ObservableList<TourLog> tourLogs;
     private final TourPlannerManager manager;
-    private final TourInfoViewModel tourInfoViewModel = ViewModelFactory.INSTANCE.getTourInfoViewModel();
-    private EditTourLogViewModel editTourLogViewModel;
 
     public TourLogsViewModel() {
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
         this.tourLogs = FXCollections.observableArrayList();
-        this.editTourLogViewModel = ViewModelFactory.INSTANCE.getEditTourLogViewModel();
     }
 
     public ObservableList<TourLog> getTourLogs() {
@@ -39,12 +38,12 @@ public class TourLogsViewModel {
         this.tourLogs.addAll(currentTour.getTourLogs());
     }
 
-    public void changeMisc(TourLog currentTourLog){
-        this.tourInfoViewModel.changeMisc(currentTourLog);
+    public void updateTourLogs(){
+        this.tourLogs.clear();
+        this.tourLogs.addAll(manager.getTours().stream().filter(e -> e.getId() == currentTour.getId()).findFirst().get().getTourLogs());
     }
 
-    public void addTourLog(TourLog currentTourLog){
-
+    public void addTourLog(){
         try{
             URL fxmlLocation = Main.class.getResource("addTourLog.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
@@ -61,12 +60,8 @@ public class TourLogsViewModel {
         }
     }
 
-    public void setCurrentTourLog(TourLog tourLog){
-        this.currentTourLog = tourLog;
-    }
 
     public void editTourLog(){
-        editTourLogViewModel.currentTourLogProperty().set(this.currentTourLog);
         try{
             URL fxmlLocation = Main.class.getResource("editTourLog.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
@@ -84,9 +79,19 @@ public class TourLogsViewModel {
 
     public void deleteTourLog(TourLog currentTourLog) {
         manager.deleteTourLog(currentTourLog);
+        this.updateTourLogs();
+    }
+
+    public TourLog getCurrentTourLog() {
+        return currentTourLog.get();
+    }
+
+    public SimpleObjectProperty<TourLog> currentTourLogProperty() {
+        return currentTourLog;
     }
 
     public Tour getCurrentTour() {
         return currentTour;
     }
+
 }
