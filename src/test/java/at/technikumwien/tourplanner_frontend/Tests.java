@@ -1,4 +1,4 @@
-package at.fhtw.highscores;
+package at.technikumwien.tourplanner_frontend;
 
 import at.technikumwien.tourplanner_frontend.businesslayer.calculator.StatsCalculator;
 import at.technikumwien.tourplanner_frontend.businesslayer.export.PdfConverter;
@@ -118,7 +118,6 @@ class Tests {
         // Assert
         Assertions.assertTrue(Files.exists(Paths.get(filePath)));
     }
-
 
 
 }

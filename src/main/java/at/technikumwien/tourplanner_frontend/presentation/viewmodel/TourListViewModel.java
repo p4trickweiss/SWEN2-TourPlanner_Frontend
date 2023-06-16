@@ -20,8 +20,9 @@ public class TourListViewModel {
     //private Tour currentTour;
     private SimpleObjectProperty<Tour> currentTour = new SimpleObjectProperty<>();
     private final TourLogsViewModel tourLogsViewModel;
-    private final TourPlannerManager manager;
 
+
+    private TourPlannerManager manager;
 
     public TourListViewModel() {
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
@@ -63,7 +64,12 @@ public class TourListViewModel {
         this.updateTourList();
     }
 
-   public void addTour() {
+    public void setManager(TourPlannerManager manager) {
+        this.manager = manager;
+    }
+
+
+    public void addTour() {
        try{
            URL fxmlLocation = Main.class.getResource("addTour.fxml");
            FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);

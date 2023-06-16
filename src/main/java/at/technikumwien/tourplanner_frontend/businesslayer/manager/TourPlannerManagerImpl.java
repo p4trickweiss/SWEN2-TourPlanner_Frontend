@@ -16,6 +16,13 @@ public class TourPlannerManagerImpl implements TourPlannerManager {
     private final ObjectMapper objectMapper;
     private List<Tour> tourList;
 
+
+    // Für den Unit-Test
+    public TourPlannerManagerImpl(HttpRequestBackend httpRequestBackend){
+        this.httpRequestBackend = httpRequestBackend;
+        this.objectMapper = new ObjectMapper();
+    }
+
     public TourPlannerManagerImpl() {
         this.httpRequestBackend = new HttpRequestBackend();
         this.objectMapper = new ObjectMapper();

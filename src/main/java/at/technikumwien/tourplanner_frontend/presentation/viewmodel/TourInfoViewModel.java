@@ -105,19 +105,6 @@ public class TourInfoViewModel {
         currentTour.bind(tourListViewModel.currentTourProperty());
     }
 
-
-    /*public void updateTour() {
-        //Optional<Tour> updated_tour = manager.getTours().stream().filter(e -> e.getId() == currentTour.get().getId()).findFirst();
-        //updated_tour.ifPresent(obj -> currentTour.set(obj));
-
-
-    }
-
-    public void updateMisc(){
-        TourLog newTourLog = this.manager.getTours().get(currentTour.get().getId().intValue() - 1).getTourLogs().get(currentTourLog.get().getId().intValue() - 1);
-        currentTourLog.set(newTourLog);
-    }*/
-
     public void clearMisc(){
         time_stamp.set("");
         comment.set("");
