@@ -7,13 +7,19 @@ import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFac
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import at.technikumwien.tourplanner_frontend.presentation.controller.IntFilter;
 
 import javax.swing.text.View;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
+
 
 public class EditTourLogController implements Initializable {
     private static Logger logger = LogManager.getLogger(EditTourController.class);
@@ -27,6 +33,7 @@ public class EditTourLogController implements Initializable {
     public TextField total_time;
 
     private final EditTourLogViewModel editTourLogViewModel = ViewModelFactory.INSTANCE.getEditTourLogViewModel();
+    private final IntFilter intFilter = IntFilter.INSTANCE;
 
     public EditTourLogController(){}
 
@@ -36,22 +43,19 @@ public class EditTourLogController implements Initializable {
 
         comment.textProperty().bindBidirectional(editTourLogViewModel.commentProperty());
         difficulty.textProperty().bindBidirectional(editTourLogViewModel.difficultyProperty());
-        rating.textProperty().bindBidirectional(editTourLogViewModel.ratingProperty(), java.text.NumberFormat.getIntegerInstance());
+        rating.textProperty().bindBidirectional(editTourLogViewModel.ratingProperty());
         total_time.textProperty().bindBidirectional(editTourLogViewModel.total_timeProperty());
+
+        difficulty.setTextFormatter(new TextFormatter<>(intFilter.getDifficultyFilter()));
+        rating.setTextFormatter(new TextFormatter<>(intFilter.getRatingFilter()));
+        total_time.setTextFormatter(new TextFormatter<>(intFilter.getNumericFilter()));
     }
+
+
 
     @FXML
     public void editTourLogAction(){
         editTourLogViewModel.editTour();
     }
 
-    @FXML
-    public void handleInput(){
-        String inputText = rating.getText();
-        try {
-            Integer.parseInt(inputText);
-        } catch (NumberFormatException e) {
-            rating.setText(inputText.replaceAll("[^\\d]", ""));
-        }
-    }
 }

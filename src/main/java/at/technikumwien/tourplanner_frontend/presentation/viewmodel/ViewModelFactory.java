@@ -77,4 +77,5 @@ public enum ViewModelFactory {
         }
         return tourInfoViewModel;
     }
+
 }

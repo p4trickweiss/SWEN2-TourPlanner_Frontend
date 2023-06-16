@@ -3,6 +3,7 @@ package at.technikumwien.tourplanner_frontend.presentation.viewmodel;
 import at.technikumwien.tourplanner_frontend.Main;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManager;
+import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerImpl;
 import at.technikumwien.tourplanner_frontend.model.Tour;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ public class TourListViewModel {
     private SimpleObjectProperty<Tour> currentTour = new SimpleObjectProperty<>();
     private final TourLogsViewModel tourLogsViewModel;
     private final TourPlannerManager manager;
+
 
     public TourListViewModel() {
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
@@ -78,7 +80,6 @@ public class TourListViewModel {
    }
 
    public void editTour() {
-
        try{
            URL fxmlLocation = Main.class.getResource("EditTour.fxml");
            FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);

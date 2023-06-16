@@ -31,6 +31,8 @@ public class TourListController implements Initializable {
 
     private final TourListViewModel tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();
 
+    // Für Unit-Test
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         logger.info("TourListController init");
@@ -40,6 +42,7 @@ public class TourListController implements Initializable {
 
         setCurrentItem();
     }
+
 
     private void formatCells() {
         listViewTours.setCellFactory((param -> new ListCell<>() {

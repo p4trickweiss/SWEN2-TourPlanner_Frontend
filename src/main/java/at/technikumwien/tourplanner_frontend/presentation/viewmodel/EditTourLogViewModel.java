@@ -16,7 +16,7 @@ public class EditTourLogViewModel {
     private final SimpleObjectProperty<TourLog> currentTourLog = new SimpleObjectProperty<>();
     private final SimpleStringProperty comment = new SimpleStringProperty();
     private final SimpleStringProperty difficulty = new SimpleStringProperty();
-    private final SimpleIntegerProperty rating = new SimpleIntegerProperty();
+    private final SimpleStringProperty rating = new SimpleStringProperty();
     private final SimpleStringProperty total_time = new SimpleStringProperty();
     private final TourPlannerManager manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
     private final TourLogsViewModel tourLogsViewModel = ViewModelFactory.INSTANCE.getTourLogsViewModel();
@@ -30,7 +30,7 @@ public class EditTourLogViewModel {
             if(newValue != null){
                 comment.set(newValue.getComment());
                 difficulty.set(newValue.getDifficulty());
-                rating.set(newValue.getRating());
+                rating.set(newValue.getRating().toString());
                 total_time.set(newValue.getTotal_time());
             }
         });
@@ -42,16 +42,13 @@ public class EditTourLogViewModel {
                 comment.get(),
                 difficulty.get(),
                 total_time.get(),
-                rating.get(),
+                 Integer.valueOf(rating.get()),
                 0L
         );
         this.manager.editTourLog(newTourLog, currentTourLog.get().getId());
         System.out.printf(currentTourLog.get().getId().toString());
-        //tourInfoViewModel.updateMisc();
-        //tourInfoViewModel.updateTour();
         this.tourListViewModel.updateTourList();
         this.tourLogsViewModel.updateTourLogs();
-
     }
 
     public String getComment() {
@@ -78,15 +75,15 @@ public class EditTourLogViewModel {
         this.difficulty.set(difficulty);
     }
 
-    public int getRating() {
+    public String getRating() {
         return rating.get();
     }
 
-    public SimpleIntegerProperty ratingProperty() {
+    public SimpleStringProperty ratingProperty() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(String rating) {
         this.rating.set(rating);
     }
 

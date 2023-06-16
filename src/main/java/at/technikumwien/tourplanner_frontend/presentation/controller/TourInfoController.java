@@ -47,11 +47,18 @@ public class TourInfoController implements Initializable {
     @FXML
     public Text rating;
     @FXML
-    public Text avg_distance;
+    public Text avg_difficulty;
     @FXML
     public Text avg_time;
     @FXML
     public Text avg_rating;
+
+    @FXML
+    public Text popularity;
+
+    @FXML
+    public Text child_friendliness;
+
     @FXML
     private final TourInfoViewModel tourInfoViewModel = ViewModelFactory.INSTANCE.getTourInfoViewModel();
 
@@ -67,10 +74,11 @@ public class TourInfoController implements Initializable {
         tour_from.textProperty().bindBidirectional(tourInfoViewModel.tour_fromProperty());
         tour_to.textProperty().bindBidirectional(tourInfoViewModel.tour_toProperty());
         transport_type.textProperty().bindBidirectional(tourInfoViewModel.transport_typeProperty());
-        avg_distance.textProperty().bind(tourInfoViewModel.avg_distanceProperty().asString());
+        avg_difficulty.textProperty().bind(tourInfoViewModel.avg_difficultyProperty());
         avg_time.textProperty().bind(tourInfoViewModel.avg_timeProperty().asString());
         avg_rating.textProperty().bind(tourInfoViewModel.avg_ratingProperty().asString());
-
+        popularity.textProperty().bind(tourInfoViewModel.popularityProperty().asString());
+        child_friendliness.textProperty().bind(tourInfoViewModel.child_friendlinessProperty());
 
         // Image
         imageView.imageProperty().bind(Bindings.createObjectBinding(() -> {

@@ -11,15 +11,15 @@
 
         <Label text="difficulty:" />
 
-        <TextField fx:id="difficulty" />
+        <TextField fx:id="difficulty"/>
 
-        <Label text="rating:" />
+        <Label text="rating (1-5 Stars):" />
 
-        <TextField fx:id="rating" onKeyTyped="#handleInput"/>
+        <TextField fx:id="rating"/>
 
-        <Label text="time_stamp:" />
+        <Label text="total_time:" />
 
-        <TextField fx:id="total_time" />
+        <TextField fx:id="total_time"/>
 
         <Button text="submit" onAction="#editTourLogAction"/>
 </VBox>

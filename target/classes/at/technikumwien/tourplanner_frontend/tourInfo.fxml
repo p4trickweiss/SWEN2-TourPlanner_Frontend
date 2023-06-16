@@ -33,12 +33,16 @@
                 <Text fx:id="tour_to" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <Label GridPane.columnIndex="0" GridPane.rowIndex="4" text="Transport Type:"/>
                 <Text fx:id="transport_type" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="5" text="Average distance:"/>
-                <Text fx:id="avg_distance" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="5" text="Average difficulty:"/>
+                <Text fx:id="avg_difficulty" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <Label GridPane.columnIndex="0" GridPane.rowIndex="6" text="Average time:"/>
                 <Text fx:id="avg_time" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                 <Label GridPane.columnIndex="0" GridPane.rowIndex="7" text="Average rating:"/>
                 <Text fx:id="avg_rating" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="8" text="Popularity:"/>
+                <Text fx:id="popularity" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="9" text="Child friendliness"/>
+                <Text fx:id="child_friendliness" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             </GridPane>
         </Tab>
 

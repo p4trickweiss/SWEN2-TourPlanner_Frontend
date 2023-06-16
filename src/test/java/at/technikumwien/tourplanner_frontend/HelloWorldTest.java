@@ -17,6 +17,8 @@ import org.testfx.util.NodeQueryUtils;
 
 import java.io.IOException;
 
+import static org.testfx.util.NodeQueryUtils.hasText;
+
 @ExtendWith(ApplicationExtension.class)
 class HelloWorldTest {
 
@@ -26,6 +28,7 @@ class HelloWorldTest {
      *
      * @param stage - Will be injected by the test runner.
      */
+
     @Start
     private void start(Stage primaryStage) {
         try {
@@ -49,6 +52,13 @@ class HelloWorldTest {
     /**
      * @param robot - Will be injected by the test runner.
      */
+
+    @Test
+    void updateDetailsOnChange(FxRobot robot){
+        robot.clickOn("TestCombosss");
+        FxAssert.verifyThat("#tour_description", hasText("TestCombossss"));
+    }
+
     @Test
     void should_contain_outputlabel_with_text(FxRobot robot) {
         FxAssert.verifyThat("#OutputLabel", LabeledMatchers.hasText("Hello VM!"));

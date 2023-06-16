@@ -35,9 +35,14 @@ public class TourInfoViewModel {
 
 
 
-    private final SimpleFloatProperty avg_distance = new SimpleFloatProperty();
+    private final SimpleStringProperty avg_difficulty = new SimpleStringProperty();
     private final SimpleFloatProperty avg_time = new SimpleFloatProperty();
     private final SimpleFloatProperty avg_rating = new SimpleFloatProperty();
+
+
+
+    private final SimpleIntegerProperty popularity = new SimpleIntegerProperty();
+    private final SimpleStringProperty child_friendliness = new SimpleStringProperty();
     private final SimpleStringProperty imagePath = new SimpleStringProperty();
 
 
@@ -74,13 +79,15 @@ public class TourInfoViewModel {
 
                 stats = statsCalculator.calculateTourAvg(newValue);
                 avg_time.set(stats.getAvg_time());
-                avg_distance.set(stats.getAvg_distance());
+                avg_difficulty.set(stats.getAvg_difficulty());
                 avg_rating.set(stats.getAvg_rating());
 
                 stats = statsCalculator.calculateTourAvg(currentTour.get());
                 avg_time.set(stats.getAvg_time());
-                avg_distance.set(stats.getAvg_distance());
+                avg_difficulty.set(stats.getAvg_difficulty());
                 avg_rating.set(stats.getAvg_rating());
+                popularity.set(stats.getPopularity());
+                child_friendliness.set(stats.getChild_friendliness());
             }
         });
 
@@ -239,12 +246,12 @@ public class TourInfoViewModel {
         return currentTourLog;
     }
 
-    public float getAvg_distance() {
-        return avg_distance.get();
+    public String getAvg_difficulty() {
+        return avg_difficulty.get();
     }
 
-    public SimpleFloatProperty avg_distanceProperty() {
-        return avg_distance;
+    public SimpleStringProperty avg_difficultyProperty() {
+        return avg_difficulty;
     }
 
     public float getAvg_time() {
@@ -261,5 +268,21 @@ public class TourInfoViewModel {
 
     public SimpleFloatProperty avg_ratingProperty() {
         return avg_rating;
+    }
+
+    public int getPopularity() {
+        return popularity.get();
+    }
+
+    public SimpleIntegerProperty popularityProperty() {
+        return popularity;
+    }
+
+    public String getChild_friendliness() {
+        return child_friendliness.get();
+    }
+
+    public SimpleStringProperty child_friendlinessProperty() {
+        return child_friendliness;
     }
 }

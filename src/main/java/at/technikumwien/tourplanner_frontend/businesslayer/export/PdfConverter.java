@@ -35,6 +35,21 @@ public class PdfConverter {
         table.addCell(tour.getTour_distance());
         table.addCell(tour.getTransport_type());
         table.addCell(tour.getEstimated_time());
+        Stats stats = statsCalculator.calculateTourAvg(tour);
+        table.addCell(String.valueOf(stats.getAvg_rating()));
+        table.addCell(String.valueOf(stats.getAvg_time()));
+        if(stats.getAvg_difficulty() == null){
+            table.addCell("No Logs");
+        } else{
+            table.addCell(stats.getAvg_difficulty());
+        }
+
+        table.addCell(String.valueOf(stats.getPopularity()));
+        if(stats.child_friendliness == null){
+            table.addCell("No Logs");
+        } else {
+            table.addCell(stats.child_friendliness);
+        }
         return table;
     }
     public void exportSelectedTour(Tour currentTour, String path){
@@ -59,7 +74,7 @@ public class PdfConverter {
             document.add(image);
 
 
-            Table tour_table = new Table(8);
+            Table tour_table = new Table(12);
 
             tour_table.addHeaderCell("name");
             tour_table.addHeaderCell("tour description");
@@ -71,10 +86,13 @@ public class PdfConverter {
             tour_table.addHeaderCell("Average rating");
             tour_table.addHeaderCell("Average time");
             tour_table.addHeaderCell("Average difficulty");
+            tour_table.addHeaderCell("Popularity");
+            tour_table.addHeaderCell("child friendliness");
 
             tour_table = addCellsFromTour(tour_table, currentTour);
 
-            tour_table.setFontSize(10);
+            tour_table.setFontSize(9);
+            tour_table.setMaxWidth(100);
             document.add(tour_table);
 
             Paragraph logsHeader = new Paragraph("Logs").setFontSize(14).setBold();
@@ -82,6 +100,7 @@ public class PdfConverter {
 
             if(currentTour.getTourLogs().size() > 0){
                 Table logs_table = new Table(5);
+                logs_table.setFontSize(9);
 
                 logs_table.addHeaderCell("comment");
                 logs_table.addHeaderCell("difficulty");
@@ -131,8 +150,8 @@ public class PdfConverter {
             document.add(tours_header);
 
 
-            Table tour_table = new Table(7);
-            tour_table.setFontSize(10);
+            Table tour_table = new Table(12);
+            tour_table.setFontSize(9);
 
             tour_table.addHeaderCell("name");
             tour_table.addHeaderCell("tour description");
@@ -141,50 +160,24 @@ public class PdfConverter {
             tour_table.addHeaderCell("tour distance");
             tour_table.addHeaderCell("transport type");
             tour_table.addHeaderCell("estimated time");
+            tour_table.addHeaderCell("Average rating");
+            tour_table.addHeaderCell("Average time");
+            tour_table.addHeaderCell("Average difficulty");
+            tour_table.addHeaderCell("Popularity");
+            tour_table.addHeaderCell("child friendliness");
 
-            Table tourLogs_table = new Table(4);
-            tourLogs_table.setFontSize(10);
-
-            tourLogs_table.addHeaderCell("Tour");
-            tourLogs_table.addHeaderCell("avg. time");
-            tourLogs_table.addHeaderCell("avg. distance");
-            tourLogs_table.addHeaderCell("avg. rating");
-
-            // Time and Difficulty are not type of integer --> no Average value. Input?
-
-            //int sum_time;
-            //int avg_time;
-
-            //int sum_diff;
-            //int avg_diff;
-
-            int sum_rating;
-            int avg_rating;
-
-            Stats stats;
+            tour_table.setMaxWidth(100);
 
             for(int i = 0; i < tours.size(); i++){
                 Tour iterator = tours.get(i);
-
                 tour_table = addCellsFromTour(tour_table, iterator);
-
-                stats = statsCalculator.calculateTourAvg(iterator);
-
-                tourLogs_table.addCell(iterator.getName());
-                tourLogs_table.addCell(String.valueOf(stats.getAvg_time()));
-                tourLogs_table.addCell(String.valueOf(stats.getAvg_distance()));
-                tourLogs_table.addCell(String.valueOf(stats.getAvg_rating()));
-
             }
 
             document.add(tour_table);
-            document.add(tourLogs_table);
             document.close();
         } catch (Exception e){
             System.out.printf(e.getMessage());
         }
-
-
     }
 
     private static byte[] downloadImage(String imageUrl) throws IOException {

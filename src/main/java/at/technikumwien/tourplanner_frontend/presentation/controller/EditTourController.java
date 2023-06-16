@@ -44,6 +44,7 @@ public class EditTourController implements Initializable {
         tour_from.textProperty().bindBidirectional(editTourViewModel.tour_fromProperty());
         tour_to.textProperty().bindBidirectional(editTourViewModel.tour_toProperty());
         transport_type.valueProperty().bindBidirectional(editTourViewModel.transport_typeProperty());
+
     }
 
     @FXML
