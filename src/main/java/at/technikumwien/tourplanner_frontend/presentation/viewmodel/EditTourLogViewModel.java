@@ -2,14 +2,10 @@ package at.technikumwien.tourplanner_frontend.presentation.viewmodel;
 
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManager;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
-import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerImpl;
 import at.technikumwien.tourplanner_frontend.model.NewTourLog;
 import at.technikumwien.tourplanner_frontend.model.TourLog;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-
-import javax.swing.text.View;
 
 public class EditTourLogViewModel {
 
@@ -43,10 +39,9 @@ public class EditTourLogViewModel {
                 difficulty.get(),
                 total_time.get(),
                  Integer.valueOf(rating.get()),
-                0L
+                tourListViewModel.getCurrentTour().getId()
         );
         this.manager.editTourLog(newTourLog, currentTourLog.get().getId());
-        System.out.printf(currentTourLog.get().getId().toString());
         this.tourListViewModel.updateTourList();
         this.tourLogsViewModel.updateTourLogs();
     }

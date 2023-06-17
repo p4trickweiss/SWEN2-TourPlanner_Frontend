@@ -1,7 +1,8 @@
 package at.technikumwien.tourplanner_frontend.presentation.viewmodel;
 
 import at.technikumwien.tourplanner_frontend.Main;
-import at.technikumwien.tourplanner_frontend.businesslayer.export.PdfConverter;
+import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManager;
+import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,7 +12,12 @@ import java.net.URL;
 
 public class MainWindowViewModel {
 
+    private final TourListViewModel tourListViewModel;
+    private final TourPlannerManager manager;
+
     public MainWindowViewModel(){
+        tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();
+        manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
     }
 
     public void openExportPopup(){
@@ -30,4 +36,8 @@ public class MainWindowViewModel {
         }
     }
 
+    public void deleteAllTours() {
+        manager.deleteAllTours();
+        tourListViewModel.updateTourList();
+    }
 }

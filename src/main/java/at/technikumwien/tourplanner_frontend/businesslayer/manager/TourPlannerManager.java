@@ -15,4 +15,5 @@ public interface TourPlannerManager {
     void addTourLog(NewTourLog newTour);
     void editTourLog(NewTourLog tour, Long id);
     void deleteTourLog(TourLog currentLog);
+    void deleteAllTours();
 }

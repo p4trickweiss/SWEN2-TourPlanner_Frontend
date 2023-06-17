@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.text.View;
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -34,4 +34,8 @@ public class MainWindowController implements Initializable {
         mainWindowViewModel.openExportPopup();
     }
 
+    @FXML
+    public void deleteAllTours() {
+        mainWindowViewModel.deleteAllTours();
+    }
 }
