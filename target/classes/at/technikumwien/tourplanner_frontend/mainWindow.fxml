@@ -17,6 +17,7 @@
             </Menu>
             <Menu text="Edit">
                 <items>
+                    <MenuItem text="Delete all" onAction="#deleteAllTours" />
                 </items>
             </Menu>
             <Menu text="Options">

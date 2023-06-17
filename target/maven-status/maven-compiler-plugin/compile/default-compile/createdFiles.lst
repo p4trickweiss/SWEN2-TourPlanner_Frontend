@@ -1,2 +1,5 @@
+at/technikumwien/tourplanner_frontend/model/Stats.class
 at/technikumwien/tourplanner_frontend/model/NewTour.class
+at/technikumwien/tourplanner_frontend/businesslayer/calculator/StatsCalculator.class
 module-info.class
+at/technikumwien/tourplanner_frontend/presentation/controller/IntFilter.class
