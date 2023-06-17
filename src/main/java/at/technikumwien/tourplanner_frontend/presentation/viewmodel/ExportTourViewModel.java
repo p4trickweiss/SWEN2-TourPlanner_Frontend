@@ -1,7 +1,5 @@
 package at.technikumwien.tourplanner_frontend.presentation.viewmodel;
 
-import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
-import at.technikumwien.tourplanner_frontend.model.NewTour;
 import at.technikumwien.tourplanner_frontend.businesslayer.export.PdfConverter;
 
 import javax.swing.text.View;
@@ -9,8 +7,8 @@ import javax.swing.text.View;
 
 public class ExportTourViewModel {
 
-    private PdfConverter pdfConverter = new PdfConverter();
-    private TourListViewModel tourListViewModel;
+    private final PdfConverter pdfConverter = new PdfConverter();
+    private final TourListViewModel tourListViewModel;
 
     public ExportTourViewModel() {
         this.tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();

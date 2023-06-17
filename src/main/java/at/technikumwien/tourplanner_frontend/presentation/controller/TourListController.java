@@ -1,6 +1,8 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
 import at.technikumwien.tourplanner_frontend.model.Tour;
+import at.technikumwien.tourplanner_frontend.presentation.viewmodel.EditTourViewModel;
+import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourInfoViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourListViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
 import javafx.fxml.FXML;
@@ -29,6 +31,8 @@ public class TourListController implements Initializable {
 
     private final TourListViewModel tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();
 
+    // Für Unit-Test
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         logger.info("TourListController init");
@@ -38,6 +42,7 @@ public class TourListController implements Initializable {
 
         setCurrentItem();
     }
+
 
     private void formatCells() {
         listViewTours.setCellFactory((param -> new ListCell<>() {
@@ -59,7 +64,6 @@ public class TourListController implements Initializable {
                 currentTour = newValue;
                 tourListViewModel.setCurrentTour(currentTour);
                 tourListViewModel.changeLogs();
-                tourListViewModel.changeDetails();
             }
         });
     }

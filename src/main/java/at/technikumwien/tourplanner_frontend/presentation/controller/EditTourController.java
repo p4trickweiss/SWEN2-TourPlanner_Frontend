@@ -1,14 +1,12 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
-import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManager;
-import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
-import at.technikumwien.tourplanner_frontend.model.Tour;
-import at.technikumwien.tourplanner_frontend.model.TourLog;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.EditTourViewModel;
+import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourInfoViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourListViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,10 +29,9 @@ public class EditTourController implements Initializable {
     @FXML
     public TextField tour_to;
     @FXML
-    public TextField transport_type;
+    public ComboBox transport_type;
 
     private final EditTourViewModel editTourViewModel = ViewModelFactory.INSTANCE.getEditTourViewModel();
-    private final TourListViewModel tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();
 
     public EditTourController(){}
 
@@ -46,12 +43,12 @@ public class EditTourController implements Initializable {
         tour_description.textProperty().bindBidirectional(editTourViewModel.tour_descriptionProperty());
         tour_from.textProperty().bindBidirectional(editTourViewModel.tour_fromProperty());
         tour_to.textProperty().bindBidirectional(editTourViewModel.tour_toProperty());
-        transport_type.textProperty().bindBidirectional(editTourViewModel.transport_typeProperty());
+        transport_type.valueProperty().bindBidirectional(editTourViewModel.transport_typeProperty());
+
     }
 
     @FXML
     public void editTourAction(){
         editTourViewModel.editTour();
-        tourListViewModel.updateTourList();
     }
 }

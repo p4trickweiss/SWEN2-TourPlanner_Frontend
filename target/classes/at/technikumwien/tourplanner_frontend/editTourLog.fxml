@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -14,19 +11,15 @@
 
         <Label text="difficulty:" />
 
-        <TextField fx:id="difficulty" />
+        <TextField fx:id="difficulty"/>
 
-        <Label text="rating:" />
+        <Label text="rating (1-5 Stars):" />
 
-        <TextField fx:id="rating" />
-
-        <Label text="time_stamp:" />
-
-        <TextField fx:id="time_stamp" />
+        <TextField fx:id="rating"/>
 
         <Label text="total_time:" />
 
-        <TextField fx:id="total_time" />
+        <TextField fx:id="total_time"/>
 
         <Button text="submit" onAction="#editTourLogAction"/>
 </VBox>

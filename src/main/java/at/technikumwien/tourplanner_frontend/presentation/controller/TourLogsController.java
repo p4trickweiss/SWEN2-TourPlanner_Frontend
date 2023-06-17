@@ -1,9 +1,7 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
-import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.model.TourLog;
-import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourLogsViewModel;
-import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
+import at.technikumwien.tourplanner_frontend.presentation.viewmodel.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,8 +11,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -39,7 +35,7 @@ public class TourLogsController implements Initializable {
     private TourLog currentTourLog;
 
     private final TourLogsViewModel tourLogsViewModel = ViewModelFactory.INSTANCE.getTourLogsViewModel();
-
+    private final TourListViewModel tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         logger.info("TourLogsController init");
@@ -51,8 +47,8 @@ public class TourLogsController implements Initializable {
     }
 
     private void formatTableCells() {
-        tvDate.setCellValueFactory(new PropertyValueFactory<>("comment"));
-        tvDuration.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
+        tvDate.setCellValueFactory(new PropertyValueFactory<>("time_stamp"));
+        tvDuration.setCellValueFactory(new PropertyValueFactory<>("total_time"));
         tvDistance.setCellValueFactory(new PropertyValueFactory<>("rating"));
     }
 
@@ -60,10 +56,12 @@ public class TourLogsController implements Initializable {
         tableViewTourLogs.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             if ((newValue != null) && (oldValue != newValue)) {
                 currentTourLog = newValue;
-                tourLogsViewModel.changeMisc(currentTourLog);
+                tourLogsViewModel.currentTourLogProperty().set(newValue);
             }
         });
     }
+
+
 
     @FXML
     public void addTourLog(){
@@ -72,8 +70,12 @@ public class TourLogsController implements Initializable {
 
     @FXML
     public void editTourLog(){
-        tourLogsViewModel.editTourLog(currentTourLog);
+        tourLogsViewModel.editTourLog();
     }
 
-
+    @FXML
+    public void deleteTourLog() {
+        tourLogsViewModel.deleteTourLog(currentTourLog);
+        tourListViewModel.updateTourList();
+    }
 }

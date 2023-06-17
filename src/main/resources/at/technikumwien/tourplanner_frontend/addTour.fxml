@@ -3,6 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <VBox xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.technikumwien.tourplanner_frontend.presentation.controller.AddTourController">
 
     <Label text="name:" />
@@ -19,7 +21,16 @@
 
     <Label text="transport type:" />
 
-    <TextField fx:id="transport_type" />
+    <ComboBox fx:id="transport_type" prefWidth="200" >
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="shortest"/>
+                <String fx:value="pedestrian"/>
+                <String fx:value="bicycle"/>
+                <String fx:value="fastest"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
 
     <Label text="tour description:" />
 

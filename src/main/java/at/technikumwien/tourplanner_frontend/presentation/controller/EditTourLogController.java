@@ -1,21 +1,25 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
-import at.technikumwien.tourplanner_frontend.model.NewTourLog;
-import at.technikumwien.tourplanner_frontend.model.Tour;
-import at.technikumwien.tourplanner_frontend.model.TourLog;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.EditTourLogViewModel;
-import at.technikumwien.tourplanner_frontend.presentation.viewmodel.EditTourViewModel;
+import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourListViewModel;
+import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourLogsViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import at.technikumwien.tourplanner_frontend.presentation.controller.IntFilter;
+
+import javax.swing.text.View;
+import java.awt.event.KeyEvent;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
+
 
 public class EditTourLogController implements Initializable {
     private static Logger logger = LogManager.getLogger(EditTourController.class);
@@ -26,27 +30,32 @@ public class EditTourLogController implements Initializable {
     @FXML
     public TextField rating;
     @FXML
-    public TextField time_stamp;
-    @FXML
     public TextField total_time;
-    @FXML
-    public Button submit_button;
 
     private final EditTourLogViewModel editTourLogViewModel = ViewModelFactory.INSTANCE.getEditTourLogViewModel();
+    private final IntFilter intFilter = IntFilter.INSTANCE;
 
     public EditTourLogController(){}
 
     @Override
-    public void initialize(URL ulr, ResourceBundle resourceBundle){
+    public void initialize(URL url, ResourceBundle resourceBundle){
         logger.info("EditTourLogController created");
 
-        // Current Item missing
+        comment.textProperty().bindBidirectional(editTourLogViewModel.commentProperty());
+        difficulty.textProperty().bindBidirectional(editTourLogViewModel.difficultyProperty());
+        rating.textProperty().bindBidirectional(editTourLogViewModel.ratingProperty());
+        total_time.textProperty().bindBidirectional(editTourLogViewModel.total_timeProperty());
+
+        difficulty.setTextFormatter(new TextFormatter<>(intFilter.getDifficultyFilter()));
+        rating.setTextFormatter(new TextFormatter<>(intFilter.getRatingFilter()));
+        total_time.setTextFormatter(new TextFormatter<>(intFilter.getNumericFilter()));
     }
+
+
 
     @FXML
     public void editTourLogAction(){
-        NewTourLog tourLog = new NewTourLog(comment.getText(), difficulty.getText(), rating.getText(), time_stamp.getText(), total_time.getText());
-        // id is maybe needed
-        editTourLogViewModel.editTour(tourLog);
+        editTourLogViewModel.editTour();
     }
+
 }

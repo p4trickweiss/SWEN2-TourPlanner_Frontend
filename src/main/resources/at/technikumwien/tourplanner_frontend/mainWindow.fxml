@@ -17,6 +17,7 @@
             </Menu>
             <Menu text="Edit">
                 <items>
+                    <MenuItem text="Delete all" onAction="#deleteAllTours" />
                 </items>
             </Menu>
             <Menu text="Options">
@@ -28,8 +29,8 @@
     </MenuBar>
     <GridPane VBox.vgrow="ALWAYS">
         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="75"/>
         </columnConstraints>
         <rowConstraints>
             <RowConstraints />
@@ -39,7 +40,7 @@
         <children>
             <fx:include fx:id="searchBar" source="searchBar.fxml" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS"/>
             <fx:include fx:id="tourList" source="tourList.fxml" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.rowSpan="3" GridPane.vgrow="ALWAYS"/>
-            <fx:include fx:id="tourInfo" source="tourInfo.fxml" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+            <fx:include fx:id="tourInfo" source="tourInfo.fxml" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" fillWidth="true"/>
             <fx:include fx:id="tourLogs" source="tourLogs.fxml" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
         </children>
     </GridPane>

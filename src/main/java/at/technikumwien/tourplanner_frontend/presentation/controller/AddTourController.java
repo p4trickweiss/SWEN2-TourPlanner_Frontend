@@ -1,10 +1,10 @@
 package at.technikumwien.tourplanner_frontend.presentation.controller;
 
-import at.technikumwien.tourplanner_frontend.model.NewTour;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.AddTourViewModel;
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import org.apache.logging.log4j.LogManager;
@@ -25,7 +25,7 @@ public class AddTourController implements Initializable {
     public TextField tour_to;
     //TODO change to dropdown
     @FXML
-    public TextField transport_type;
+    public ComboBox transport_type;
     @FXML
     public TextField tour_description;
     @FXML
@@ -43,7 +43,7 @@ public class AddTourController implements Initializable {
         tour_description.textProperty().bindBidirectional(addTourViewModel.tour_descriptionProperty());
         tour_from.textProperty().bindBidirectional(addTourViewModel.tour_fromProperty());
         tour_to.textProperty().bindBidirectional(addTourViewModel.tour_toProperty());
-        transport_type.textProperty().bindBidirectional(addTourViewModel.transport_typeProperty());
+        transport_type.valueProperty().bindBidirectional(addTourViewModel.transport_typeProperty());
     }
 
     @FXML
