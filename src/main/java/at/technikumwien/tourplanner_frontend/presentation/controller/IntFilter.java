@@ -18,16 +18,6 @@ public enum IntFilter {
         };
     }
 
-    public UnaryOperator<TextFormatter.Change> getDifficultyFilter(){
-        return change -> {
-            String newText = change.getControlNewText();
-            if(isNumericDifficulty(newText)) {
-                return change;
-            }
-            return null;
-        };
-    }
-
     public UnaryOperator<TextFormatter.Change> getRatingFilter(){
         return change -> {
             String newText = change.getControlNewText();
@@ -42,6 +32,5 @@ public enum IntFilter {
         return Pattern.matches("^[0-9]*$", str);
     }
 
-    private boolean isNumericDifficulty(String str) { return Pattern.matches("^[0-3]?", str);}
     private boolean isNumericRating(String str) { return Pattern.matches("^[0-5s]?", str);}
 }

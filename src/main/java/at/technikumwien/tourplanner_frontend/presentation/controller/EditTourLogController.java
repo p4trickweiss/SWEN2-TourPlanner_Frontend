@@ -6,6 +6,7 @@ import at.technikumwien.tourplanner_frontend.presentation.viewmodel.TourLogsView
 import at.technikumwien.tourplanner_frontend.presentation.viewmodel.ViewModelFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import org.apache.logging.log4j.LogManager;
@@ -26,7 +27,7 @@ public class EditTourLogController implements Initializable {
 
     public TextField comment;
     @FXML
-    public TextField difficulty;
+    public ComboBox difficulty;
     @FXML
     public TextField rating;
     @FXML
@@ -42,16 +43,13 @@ public class EditTourLogController implements Initializable {
         logger.info("EditTourLogController created");
 
         comment.textProperty().bindBidirectional(editTourLogViewModel.commentProperty());
-        difficulty.textProperty().bindBidirectional(editTourLogViewModel.difficultyProperty());
+        difficulty.valueProperty().bindBidirectional(editTourLogViewModel.difficultyProperty());
         rating.textProperty().bindBidirectional(editTourLogViewModel.ratingProperty());
         total_time.textProperty().bindBidirectional(editTourLogViewModel.total_timeProperty());
 
-        difficulty.setTextFormatter(new TextFormatter<>(intFilter.getDifficultyFilter()));
         rating.setTextFormatter(new TextFormatter<>(intFilter.getRatingFilter()));
         total_time.setTextFormatter(new TextFormatter<>(intFilter.getNumericFilter()));
     }
-
-
 
     @FXML
     public void editTourLogAction(){

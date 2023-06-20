@@ -3,12 +3,19 @@ package at.technikumwien.tourplanner_frontend.businesslayer.calculator;
 import at.technikumwien.tourplanner_frontend.model.Stats;
 import at.technikumwien.tourplanner_frontend.model.Tour;
 import at.technikumwien.tourplanner_frontend.model.TourLog;
+import at.technikumwien.tourplanner_frontend.presentation.controller.EditTourController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class StatsCalculator {
 
+    private static Logger logger = LogManager.getLogger(StatsCalculator.class);
+
     public Stats calculateTourAvg(Tour currentTour){
+
+        logger.info("Calculating Stats...");
 
         if(currentTour.getTourLogs() == null || currentTour.getTourLogs().size() == 0){
             return new Stats(0, null, 0, 0, null);
@@ -33,7 +40,8 @@ public class StatsCalculator {
                 }
             }
         } catch (Exception e){
-            System.out.printf("Cant Convert String to int");
+            logger.info("Cant Convert String to int");
+            logger.error(e.getMessage());
             return new Stats(0, null, 0, 0, null);
         }
 
@@ -54,7 +62,8 @@ public class StatsCalculator {
 
         }
         catch (Exception e){
-            System.out.printf("Cant convert String to int");
+            logger.info("Cant Convert String to int");
+            logger.error(e.getMessage());
             return new Stats(0, null, 0, 0, null);
         }
 
@@ -67,6 +76,8 @@ public class StatsCalculator {
         } else{
             avg_difficulty_string = "hard";
         }
+
+        logger.info("Stats calculated succesfully");
 
         // replace 0 with variables
         return new Stats(avg_time, avg_difficulty_string, avg_rating, tourLogList.size(), child_friendliness);

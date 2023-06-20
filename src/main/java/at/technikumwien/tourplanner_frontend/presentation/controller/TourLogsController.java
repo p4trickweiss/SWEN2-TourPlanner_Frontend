@@ -61,8 +61,6 @@ public class TourLogsController implements Initializable {
         });
     }
 
-
-
     @FXML
     public void addTourLog(){
         tourLogsViewModel.addTourLog();
@@ -77,5 +75,6 @@ public class TourLogsController implements Initializable {
     public void deleteTourLog() {
         tourLogsViewModel.deleteTourLog(currentTourLog);
         tourListViewModel.updateTourList();
+        tableViewTourLogs.getSelectionModel().selectFirst();
     }
 }

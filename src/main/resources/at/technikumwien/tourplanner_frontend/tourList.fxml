@@ -15,6 +15,7 @@
             <Button fx:id="btnAddTour" onAction="#addTour" text="+" />
             <Button fx:id="btnDeleteTour" onAction="#deleteTour" text="-" />
             <Button fx:id="btnEditTour" onAction="#editTour" text="..." />
+            <Button fx:id="btnExportTours" onAction="#exportTours" text="export" />
         </HBox>
         <ListView fx:id="listViewTours" VBox.vgrow="ALWAYS"/>
     </children>

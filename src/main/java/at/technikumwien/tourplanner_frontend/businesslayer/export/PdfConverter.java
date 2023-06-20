@@ -15,6 +15,8 @@ import com.itextpdf.layout.properties.HorizontalAlignment;
 import javafx.collections.ObservableList;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.io.image.ImageDataFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,6 +26,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
 public class PdfConverter {
+    private static Logger logger = LogManager.getLogger(StatsCalculator.class);
 
     private StatsCalculator statsCalculator = new StatsCalculator();
 
@@ -124,9 +127,11 @@ public class PdfConverter {
             }
 
             document.close();
+            logger.info("Tour-PDF succesfully Created!");
 
         } catch (Exception e){
-            System.out.printf(e.getMessage());
+            logger.info("Failed creating tour-pdf");
+            logger.error(e.getMessage());
         }
     }
 
@@ -148,7 +153,6 @@ public class PdfConverter {
 
             Paragraph tours_header = new Paragraph("Tours: ").setFontSize(14).setBold();
             document.add(tours_header);
-
 
             Table tour_table = new Table(12);
             tour_table.setFontSize(9);
@@ -175,8 +179,10 @@ public class PdfConverter {
 
             document.add(tour_table);
             document.close();
+            logger.info("Summary-PDF succesfully Created!");
         } catch (Exception e){
-            System.out.printf(e.getMessage());
+            logger.info("Failed creating Summary");
+            logger.error(e.getMessage());
         }
     }
 

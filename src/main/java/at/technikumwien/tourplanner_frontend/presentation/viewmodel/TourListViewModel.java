@@ -1,10 +1,12 @@
 package at.technikumwien.tourplanner_frontend.presentation.viewmodel;
 
 import at.technikumwien.tourplanner_frontend.Main;
+import at.technikumwien.tourplanner_frontend.businesslayer.export.ExportTours;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerFactory;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManager;
 import at.technikumwien.tourplanner_frontend.businesslayer.manager.TourPlannerManagerImpl;
 import at.technikumwien.tourplanner_frontend.model.Tour;
+import at.technikumwien.tourplanner_frontend.presentation.controller.AddTourController;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,10 +14,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 
 public class TourListViewModel {
+    private static Logger logger = LogManager.getLogger(AddTourController.class);
+
     private final ObservableList<Tour> tours;
     //private Tour currentTour;
     private SimpleObjectProperty<Tour> currentTour = new SimpleObjectProperty<>();
@@ -54,9 +60,14 @@ public class TourListViewModel {
     public void updateTourList() {
         tours.clear();
         tours.addAll(manager.getTours());
-        if(currentTour.get() != null){
-            currentTour.set(manager.getTours().stream().filter(e -> e.getId() == currentTour.get().getId()).findFirst().get());
+        try{
+            if(currentTour.get() != null){
+                currentTour.set(manager.getTours().stream().filter(e -> e.getId() == currentTour.get().getId()).findFirst().get());
+            }
+        } catch (Exception e){
+            logger.warn(e.getMessage());
         }
+
     }
 
     public void deleteTour(Tour currentTour) {
@@ -68,6 +79,9 @@ public class TourListViewModel {
         this.manager = manager;
     }
 
+    public void exportTourData() {
+        ExportTours.exportTours(tours);
+    }
 
     public void addTour() {
        try{
@@ -80,8 +94,7 @@ public class TourListViewModel {
            stage.setScene(new Scene(root1));
            stage.show();
        } catch (Exception e) {
-           System.out.printf(e.getMessage());
-           System.out.println("Cant load new window");
+           logger.error(e.getMessage());
        }
    }
 
@@ -96,8 +109,7 @@ public class TourListViewModel {
            stage.setScene(new Scene(root1));
            stage.show();
        } catch (Exception e) {
-           System.out.printf(e.getMessage());
-           System.out.println("Cant load new window");
+           logger.error(e.getMessage());
        }
    }
 }

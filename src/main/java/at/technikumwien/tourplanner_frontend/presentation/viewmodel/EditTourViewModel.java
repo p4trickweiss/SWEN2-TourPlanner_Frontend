@@ -18,13 +18,11 @@ public class EditTourViewModel {
     private final SimpleStringProperty tour_to = new SimpleStringProperty();
     private final SimpleStringProperty transport_type = new SimpleStringProperty();
     private final TourListViewModel tourListViewModel;
-    private final TourInfoViewModel tourInfoViewModel;
     private final TourPlannerManager manager;
 
     public EditTourViewModel(){
         this.manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
         this.tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();
-        this.tourInfoViewModel = ViewModelFactory.INSTANCE.getTourInfoViewModel();
 
 
         currentTour.addListener((observableValue, oldValue, newValue) -> {
@@ -45,7 +43,6 @@ public class EditTourViewModel {
         NewTour editTour = new NewTour(name.get(), tour_from.get(), tour_to.get(), transport_type.get(), tour_description.get());
         manager.editTour(editTour, currentTour.get().getId());
         tourListViewModel.updateTourList();
-        //tourInfoViewModel.updateTour();
     }
 
 

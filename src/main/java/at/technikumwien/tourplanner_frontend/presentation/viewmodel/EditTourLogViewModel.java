@@ -16,11 +16,10 @@ public class EditTourLogViewModel {
     private final SimpleStringProperty total_time = new SimpleStringProperty();
     private final TourPlannerManager manager = TourPlannerManagerFactory.INSTANCE.getTourPlannerManager();
     private final TourLogsViewModel tourLogsViewModel = ViewModelFactory.INSTANCE.getTourLogsViewModel();
-    private final TourListViewModel tourListViewModel;
+    private final TourListViewModel tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();;
 
 
     public EditTourLogViewModel(){
-        this.tourListViewModel = ViewModelFactory.INSTANCE.getTourListViewModel();
 
         currentTourLog.addListener((observableValue, oldValue, newValue) -> {
             if(newValue != null){

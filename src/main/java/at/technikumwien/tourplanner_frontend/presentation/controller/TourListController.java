@@ -26,6 +26,8 @@ public class TourListController implements Initializable {
     public Button btnDeleteTour;
     @FXML
     public Button btnEditTour;
+    @FXML
+    public Button btnExportTour;
 
     private Tour currentTour;
 
@@ -71,6 +73,7 @@ public class TourListController implements Initializable {
     @FXML
     private void deleteTour() {
         tourListViewModel.deleteTour(currentTour);
+        listViewTours.getSelectionModel().selectFirst();
     }
 
     @FXML
@@ -81,6 +84,10 @@ public class TourListController implements Initializable {
     @FXML
     private void editTour() {
         tourListViewModel.editTour();
+    }
 
+    @FXML
+    private void exportTours(){
+        tourListViewModel.exportTourData();
     }
 }
